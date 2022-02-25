@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'App\Http\Controllers\homeController@home');
 
-route::resource('/iku', 'App\Http\Controllers\ikuController');
+Route::get('/iku', 'App\Http\Controllers\ikuController@index');
+Route::post('/iku/tambah', 'App\Http\Controllers\ikuController@store');
 
 
 // Route::get('/', function () {

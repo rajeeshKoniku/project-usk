@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Iku;
+use Log;
 
 class ikuController extends Controller
 {
@@ -14,6 +16,7 @@ class ikuController extends Controller
     public function index()
     {
         //
+        return view('iku.index');
     }
 
     /**
@@ -32,9 +35,15 @@ class ikuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
-        //
+        $data = [
+            "Kode_IK" => 'ok',
+            "Indikator_Kinerja" => 'disad'
+        ];
+        Iku::create($data);
+
+         return response()->json(['success'=>'Got Simple Ajax Request.']);
     }
 
     /**

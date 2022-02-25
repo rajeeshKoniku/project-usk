@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Iku extends Model
 {
     use HasFactory;
-     protected $table = 'tbl_ik';
-     protected $fillable = [
-            "index_indikator",
-            "indikator_kinerja"
+     protected $table = 'tb_ik';
+     protected $fillable= [
+            "Kode_IK",
+            "Indikator_Kinerja"
      ];
-     public $timestamps = false;
 }
