@@ -16,8 +16,10 @@ use App\Http\Controllers\IkuController;
 Route::get('/', 'App\Http\Controllers\homeController@home');
 
 Route::get('/iku', [IkuController::class, 'index'])->name('iku.index');
-Route::post('/iku/tambah', [IkuController::class, 'store'])->name('iku.tambah');
+Route::post('/iku/tambah', [IkuController::class, 'store'])->name('iku.store');
 
+Route::get('/program', [ProgramController::class, 'index'])->name('program.index');
+Route::get('/program', [ProgramController::class, 'store'])->name('program.store');
 
 // Route::get('/', function () {
 //     return view('welcome');

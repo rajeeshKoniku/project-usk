@@ -67,7 +67,7 @@
                     }
                 });
                 $.ajax({
-                    url: "{{route("iku.tambah")}}",
+                    url: "{{route("iku.store")}}",
                     type: 'POST',
                     data: {
                         Kode_IK: Kode_IK,
