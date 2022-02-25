@@ -1,5 +1,5 @@
 <!-- Menghubungkan dengan view template master -->
-@extends('layout.layout')
+@extends('layouts.layout')
 @section('judul', 'Halaman Home')
 @section('konten')
 
