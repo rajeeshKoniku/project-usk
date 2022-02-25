@@ -39,10 +39,8 @@
                                 <td contenteditable="false">No</td>
                                 <td contenteditable="true" id="Kode_IK"></td>
                                 <td contenteditable="true" id="Indikator_Kinerja"></td>
-                                  <td>
-                                    <button
-                                    id="btn-submit"
-                                    class="btn btn-danger badge">Tambah Data</button>
+                                <td>
+                                    <button id="btn-submit" class="btn btn-danger badge">Tambah Data</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -53,40 +51,36 @@
             </div>
         </div>
     </div>
-    {{--/table--}}
-    {{--/ajax post request--}}
-{{--     <script src="{!! asset('assets/')!!}/js/jquery.min.js"></script> --}}
-           <script type="text/javascript">
-                $(document).ready(function() {
-                    $("#btn-submit").click(function(e){
-                        e.preventDefault();
 
-                        let Kode_IK = document.getElementById("Kode_IK").innerText
-                        let Indikator_Kinerja = document.getElementById("Indikator_Kinerja").innerText
-                        console.log($('meta[name="csrf-token"]').attr('content'));
+    {{-- /ajax post request --}}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#btn-submit").click(function(e) {
+                e.preventDefault();
 
-                        console.log(Kode_IK,Indikator_Kinerja)
-                        $.ajaxSetup(
-                            {
-                                headers:{
-                                    'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-                                }
-                        });
-                        $.ajax({
-                            url: "/iku/tambah",
-                            type:'POST',
-                            data: {
-                                Kode_IK:Kode_IK,
-                                Indikator_Kinerja:Indikator_Kinerja
-                            },
-                            success: function(data) {
-                                console.log(data)
-                            }
-                        });
-                    });
+                let Kode_IK = document.getElementById("Kode_IK").innerText
+                let Indikator_Kinerja = document.getElementById("Indikator_Kinerja").innerText
 
-
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
                 });
-            </script>
-    {{--/ajax post request--}}
+                $.ajax({
+                    url: "{{route("iku.tambah")}}",
+                    type: 'POST',
+                    data: {
+                        Kode_IK: Kode_IK,
+                        Indikator_Kinerja: Indikator_Kinerja
+                    },
+                    success: function(data) {
+                        console.log(data)
+                    }
+                });
+            });
+
+
+        });
+    </script>
+    {{-- /ajax post request --}}
 @endsection

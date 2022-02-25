@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IkuController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'App\Http\Controllers\homeController@home');
 
-Route::get('/iku', 'App\Http\Controllers\ikuController@index');
-Route::post('/iku/tambah', 'App\Http\Controllers\ikuController@store');
+Route::get('/iku', [IkuController::class, 'index'])->name('iku.index');
+Route::post('/iku/tambah', [IkuController::class, 'store'])->name('iku.tambah');
 
 
 // Route::get('/', function () {

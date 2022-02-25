@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Program;
 use Illuminate\Http\Request;
-use App\Models\Iku;
-use Log;
 
-class IkuController extends Controller
+class ProgramController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,6 @@ class IkuController extends Controller
     public function index()
     {
         //
-        return view('iku.index');
     }
 
     /**
@@ -35,24 +33,18 @@ class IkuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $req)
+    public function store(Request $request)
     {
-        $data = [
-            "Kode_IK" => 'ok',
-            "Indikator_Kinerja" => 'disad'
-        ];
-        Iku::create($data);
 
-         return response()->json(['success'=>'Got Simple Ajax Request.']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Program $program)
     {
         //
     }
@@ -60,10 +52,10 @@ class IkuController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Program $program)
     {
         //
     }
@@ -72,10 +64,10 @@ class IkuController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Program $program)
     {
         //
     }
@@ -83,10 +75,10 @@ class IkuController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Program $program)
     {
         //
     }
