@@ -3,50 +3,82 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Iku;
 
 class ikuController extends Controller
 {
-    // //
-    public function index(){
-        $data = Iku::all();
-        return view('iku/iku', compact('data'));
-    }
-
-     public function tambah(Request $req){
-        $data = [
-            "index_indikator" => $req->index_iku,
-            "indikator_kinerja" => $req->indikator
-        ];
-        Iku::create($data);
-        return redirect('/')->with('status', 'Data berhasil ditambahkan');
-    }
-
-    public function edit(Request $request)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $id = $request->route('id');
-        $data = Iku::find($id);
-        return view('iku.edit',compact('id', 'data'));
+        //
     }
 
-     public function update(Request $req)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-       $id = $req->route('id');
-        Iku::where('id', $id)
-            ->update([
-                'index_indikator' => $req->index_iku,
-                'indikator_kinerja' => $req->indikator
-            ]);
-        return redirect('/')->with('status', 'Data berhasil diubah');
-
+        //
     }
-    //App\Model::destroy(1);
-    public function delete(Request $req)
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        $id = $req->route('id');
-        Iku::destroy($id);
-        return redirect('/')->with('status', 'Data berhasil dihapus');
+        //
+    }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'App\Http\Controllers\homeController@home');
 
+route::resource('/iku', 'App\Http\Controllers\ikuController');
+
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
