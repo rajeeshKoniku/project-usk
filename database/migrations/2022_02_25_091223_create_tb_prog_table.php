@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLangsungBekerjasTable extends Migration
+class CreateTbProgTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateLangsungBekerjasTable extends Migration
      */
     public function up()
     {
-        Schema::create('langsung_bekerjas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('tb_prog', function (Blueprint $t) {
+            $t->id();
+            $t->string('Kd_Program');
+            $t->text('Program');
+            $t->string('Kd_Kegiatan');
+            $t->timestamps();
         });
     }
 
@@ -26,6 +29,6 @@ class CreateLangsungBekerjasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('langsung_bekerjas');
+        Schema::dropIfExists('tb_prog');
     }
 }
