@@ -12,20 +12,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'App\Http\Controllers\homeController@home');
-//Iku
-Route::get('/iku', 'App\Http\Controllers\ikuController@index');
-Route::post('/iku/tambah', 'App\Http\Controllers\ikuController@tambah');
-Route::get('/iku/edit/{id}', 'App\Http\Controllers\ikuController@edit');
-Route::post('/iku/update/{id}', 'App\Http\Controllers\ikuController@update');
-Route::post('/iku/delete/{id}', 'App\Http\Controllers\ikuController@delete');
-
-//Perkin
-Route::get('/perkin', 'App\Http\Controllers\perkinController@index');
-Route::get('/perkin/formTambah', 'App\Http\Controllers\perkinController@formTambah');
-Route::post('/perkin/tambah', 'App\Http\Controllers\perkinController@tambah');
-Route::get('/perkin/edit/{id}', 'App\Http\Controllers\perkinController@edit');
-Route::post('/perkin/update/{id}', 'App\Http\Controllers\perkinController@update');
-Route::post('/perkin/delete/{id}', 'App\Http\Controllers\perkinController@delete');
 
 // Route::get('/', function () {
 //     return view('welcome');
