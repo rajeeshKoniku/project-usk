@@ -4,49 +4,90 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Iku;
+use Log;
 
 class ikuController extends Controller
 {
-    // //
-    public function index(){
-        $data = Iku::all();
-        return view('iku/iku', compact('data'));
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+        return view('iku.index');
     }
 
-     public function tambah(Request $req){
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $req)
+    {
         $data = [
-            "index_indikator" => $req->index_iku,
-            "indikator_kinerja" => $req->indikator
+            "Kode_IK" => 'ok',
+            "Indikator_Kinerja" => 'disad'
         ];
         Iku::create($data);
-        return redirect('/')->with('status', 'Data berhasil ditambahkan');
+
+         return response()->json(['success'=>'Got Simple Ajax Request.']);
     }
 
-    public function edit(Request $request)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-        $id = $request->route('id');
-        $data = Iku::find($id);
-        return view('iku.edit',compact('id', 'data'));
+        //
     }
 
-     public function update(Request $req)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-       $id = $req->route('id');
-        Iku::where('id', $id)
-            ->update([
-                'index_indikator' => $req->index_iku,
-                'indikator_kinerja' => $req->indikator
-            ]);
-        return redirect('/')->with('status', 'Data berhasil diubah');
-
+        //
     }
-    //App\Model::destroy(1);
-    public function delete(Request $req)
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
-        $id = $req->route('id');
-        Iku::destroy($id);
-        return redirect('/')->with('status', 'Data berhasil dihapus');
+        //
+    }
 
-
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

@@ -3,5 +3,8 @@
 @section('title', 'Halaman Home')
 @section('content')
 
+    <div class="container">
+
+    </div>
 
 @endsection
