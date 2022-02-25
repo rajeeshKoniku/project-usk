@@ -18,4 +18,4 @@
  <link href="{!! asset('assets/') !!}/css/app.css" rel="stylesheet">
  <link href="{!! asset('assets/') !!}/css/icons.css" rel="stylesheet">
 
- <title>Dashtreme - Multipurpose Bootstrap5 Admin Template</title>
+ <title>@yield('title')</title>
