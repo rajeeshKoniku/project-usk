@@ -9,6 +9,7 @@
 <script src="{!! asset('assets/')!!}/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
 <script src="{!! asset('assets/')!!}/plugins/datatable/js/jquery.dataTables.min.js"></script>
 <script src="{!! asset('assets/')!!}/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+<script src="{!! asset('assets/')!!}/plugins/jquery-tabledit-1.2.3/jquery.tabledit.min.js"></script>
 
 <!--app JS-->
 <script src="{!! asset('assets/')!!}/js/app.js"></script>

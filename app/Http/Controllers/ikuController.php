@@ -41,9 +41,9 @@ class IkuController extends Controller
             "Kode_IK" => 'ok',
             "Indikator_Kinerja" => 'disad'
         ];
-        Iku::create($data);
 
-         return response()->json(['success'=>'Got Simple Ajax Request.']);
+        Iku::create($data);
+        return response()->json(['success'=> 'Berhasil menyimpan data']);
     }
 
     /**

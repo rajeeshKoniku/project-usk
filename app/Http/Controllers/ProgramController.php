@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
+
 
 class ProgramController extends Controller
 {
@@ -14,17 +16,12 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        //
+        return view("program.index");
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function fetch_data()
     {
-        //
+        return DataTables::of(Program::all())->toJson();
     }
 
     /**
@@ -35,29 +32,13 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
+        $data = [
+            "Kd_Program" => $request->Kd_Program,
+            "Program" => $request->Program,
+        ];
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Program  $program
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Program $program)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Program  $program
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Program $program)
-    {
-        //
+        $program = Program::create($data);
+        return response()->json($program);
     }
 
     /**
@@ -67,19 +48,22 @@ class ProgramController extends Controller
      * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Program $program)
+    public function action(Request $request)
     {
-        //
-    }
+        if ($request->ajax()) {
+            // ambil data tanpa action
+            $data = $request->except('action');
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Program  $program
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Program $program)
-    {
-        //
+            // update atau delete program
+            if ($request->action == 'edit') {
+                Program::where('id', $request->id)->update($data);
+            }
+
+            if ($request->action == 'delete') {
+                Program::where('id', $request->id)->delete();
+            }
+
+            return response()->json($request);
+        }
     }
 }
