@@ -7,10 +7,12 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="tabelIku" class="table table-striped table-bordered" style="width: 100%">
+                    <table id="tabelSs" class="table table-striped table-bordered" style="width: 100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Kode SS</th>
+                                <th>Sasaran</th>
                                 <th>Kode IK</th>
                                 <th>Indikator Kinerja</th>
                             </tr>
@@ -28,22 +30,33 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="tambahModalLabel">Tambah IKU</h5>
+                    <h5 class="modal-title" id="tambahModalLabel">Tambah SS</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     {{-- form --}}
                     <form>
                         <div class="mb-3 row">
-                            <label for="Kode_IK" class="col-sm-2 col-form-label">Kode IK</label>
+                            <label for="Kode_SS" class="col-sm-2 col-form-label">Kode SS</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control-plaintext text-light px-2" name="Kode_IK" id="Kode_IK">
+                                <input type="text" class="form-control-plaintext text-light px-2" name="Kode_SS" id="Kode_SS">
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="Indikator_Kinerja" class="col-sm-2 col-form-label">Indikator Kinerja</label>
+                            <label for="Sasaran" class="col-sm-2 col-form-label">Sasaran</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control-plaintext text-light px-2" name="Indikator_Kinerja" id="Indikator_Kinerja">
+                                <input type="text" class="form-control-plaintext text-light px-2" name="Sasaran" id="Sasaran">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="Kode_IK" class="col-sm-2 col-form-label">Kode_IK</label>
+                            <div class="col-sm-10">
+                                <select class="form-control bg-dark" name="Kode_IK" id="Kode_IK">
+                                    <?php foreach ( $data as $x ) { ?>
+                                        <option value="<?php echo $x->Kode_IK; ?>"><?php echo $x->Kode_IK ?></option>
+                                    <?php }?>
+
+                                </select>
                             </div>
                         </div>
                     </form>
@@ -67,18 +80,27 @@
             });
 
             // fetch/ambil data datatable
-            $('#tabelIku').DataTable({
+            $('#tabelSs').DataTable({
                 "processing": true,
                 "serverSide": true,
                 "order": [],
-                "ajax": "{{ route('iku.fetch_data') }}",
-                columns: [{
+                "ajax": "{{ route('ss.fetch_data') }}",
+                columns: [
+                    {
                         data: "id",
                         name: "id"
                     },
                     {
+                        data: "Kode_SS",
+                        name: "Kode_SS",
+                    },
+                    {
+                        data: "Sasaran",
+                        name: "Sasaran"
+                    },
+                    {
                         data: "Kode_IK",
-                        name: "Kode_IK",
+                        name: "Kode_IK"
                     },
                     {
                         data: "Indikator_Kinerja",
@@ -95,17 +117,18 @@
             });
 
             // saat draw tabel, jalankan tabledit
-            $('#tabelIku').on('draw.dt', function() {
-                $('#tabelIku').Tabledit({
-                    url: "{{ route('iku.action') }}",
+            $('#tabelSs').on('draw.dt', function() {
+                $('#tabelSs').Tabledit({
+                    url: "{{ route('ss.action') }}",
                     dataType: "json",
-                    // eventType: 'dblclick', =====> pakai ini jika ingin doubleclick / tanpa edit button
+                    // eventType: 'dblclick', 
                     // editButton: false,
                     columns: {
                         identifier: [0, 'id'],
                         editable: [
-                            [1, 'Kode_IK'],
-                            [2, 'Indikator_Kinerja']
+                            [1, 'Kode_SS'],
+                            [2, 'Sasaran'],
+                            [3, 'Kode_IK']
                         ]
                     },
                     restoreButton: false,
@@ -127,11 +150,11 @@
                     },
                     onSuccess: function(data, textStatus, jqXHR) {
                         // console.log(data, textStatus, jqXHR);
-                        // jika aksi hapus maka hapus data dari baris dan reload tabelIku
+                        // jika aksi hapus maka hapus data dari baris dan reload tabelSs
                         if (data.action == 'delete') {
                             $('#' + data.id).remove()
-                            // $('#tabelIku').DataTable().ajax.reload();
-                            $('#tableIku').Datatable().reload(null, false);
+                            // $('#tabelSs').DataTable().ajax.reload();
+                            $('#tabelSs').Datatable().reload(null, false);
                         }
                     },
                 });
@@ -139,21 +162,24 @@
 
             //////////////// tambah program ////////////////////////
             $('#save').click(function() {
+                let Kode_SS = $('#Kode_SS').val();
+                let Sasaran = $('#Sasaran').val();
                 let Kode_IK = $('#Kode_IK').val();
-                let Indikator_Kinerja = $('#Indikator_Kinerja').val();
 
                 $.ajax({
-                    url: "{{ route('iku.store') }}",
+                    url: "{{ route('ss.store') }}",
                     type: 'POST',
                     data: {
-                        Kode_IK, Indikator_Kinerja,
+                        Kode_SS, Sasaran, Kode_IK,
                     },
                     success: function(data) {
                         // console.log(data);
-                        $('#Indikator_Kinerja').val('');
+                        $('#Kode_SS').val('');
+                        $('#Sasaran').val('');
+                        $('#Kode_IK').val('');
 
-                        // setelah berhasil, reload tabelIku
-                        $('#tabelIku').DataTable().ajax.reload();
+                        // setelah berhasil, reload tabelSs
+                        $('#tabelSs').DataTable().ajax.reload();
                         $('#tambahModal').modal('hide');
                     }
                 });

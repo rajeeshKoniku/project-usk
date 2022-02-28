@@ -8,7 +8,7 @@
         <ul>
             <li> <a href="{{ route('iku.index') }}"><i class="bx bx-right-arrow-alt"></i>Iku</a>
             </li>
-            <li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>Sasaran</a>
+            <li> <a href="{{ route('ss.index') }}"><i class="bx bx-right-arrow-alt"></i>Sasaran</a>
             </li>
             <li> <a href="{{ route('program.index') }}"><i class="bx bx-right-arrow-alt"></i>Program</a>
             <li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>kegiatan</a>
