@@ -17,8 +17,8 @@
  <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet"> -->
  <link href="{!! asset('assets/') !!}/css/app.css" rel="stylesheet">
  <link href="{!! asset('assets/') !!}/css/icons.css" rel="stylesheet">
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<meta name="csrf-token" content="{{ csrf_token()}}">
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <meta name="csrf-token" content="{{ csrf_token()}}">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
  <title>@yield('title')</title>
