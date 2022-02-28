@@ -55,9 +55,12 @@
             </div>
         </div>
     </div>
-    </div>
 
 
+
+
+@endsection
+@push('scripts')
     <script type="text/javascript">
         $(document).ready(function() {
             $.ajaxSetup({
@@ -94,6 +97,7 @@
                 }, 'copy', 'excel', 'pdf']
             });
 
+
             // saat draw tabel, jalankan tabledit
             $('#tabelProgram').on('draw.dt', function() {
                 $('#tabelProgram').Tabledit({
@@ -105,24 +109,33 @@
                         identifier: [0, 'id'],
                         editable: [
                             [1, 'Kd_Program'],
-                            [2, 'Program']
+                            [2, 'Program', 'textarea', '{"rows": "5", "maxlength": "255", "wrap": "hard"}']
                         ]
                     },
                     restoreButton: false,
                     buttons: {
-                        delete: {
-                            class: 'btn btn-sm btn-danger m-1',
-                            html: '<span class="lni lni-trash"></span>',
-                            action: 'delete'
-                        },
                         edit: {
                             class: 'btn btn-sm btn-success m-1',
                             html: '<span class="lni lni-pencil"></span>',
                             action: 'edit'
                         },
+                        delete: {
+                            class: 'btn btn-sm btn-danger m-1',
+                            html: '<span class="lni lni-trash"></span>',
+                            action: 'delete'
+                        },
+                        save: {
+                            class: 'btn btn-sm btn-success',
+                            html: 'Save'
+                        },
+                        restore: {
+                            class: 'btn btn-sm btn-warning',
+                            html: 'Restore',
+                            action: 'restore'
+                        },
                         confirm: {
-                            class: 'btn btn-sm btn-light',
-                            html: 'Yakin?'
+                            class: 'btn btn-sm btn-danger',
+                            html: 'Confirm'
                         }
                     },
                     onSuccess: function(data, textStatus, jqXHR) {
@@ -145,11 +158,13 @@
                     url: "{{ route('program.store') }}",
                     type: 'POST',
                     data: {
-                        Kd_Program, Program,
+                        Kd_Program,
+                        Program,
                     },
                     success: function(data) {
                         // console.log(data);
                         $('#Program').val('');
+                        $('#Kd_Program').val('');
 
                         // setelah berhasil, reload tabelProgram
                         $('#tabelProgram').DataTable().ajax.reload();
@@ -159,5 +174,4 @@
             })
         });
     </script>
-
-@endsection
+@endpush

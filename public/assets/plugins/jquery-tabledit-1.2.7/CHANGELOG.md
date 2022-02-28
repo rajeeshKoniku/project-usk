@@ -1,3 +1,59 @@
+v1.2.7 (2017/09/04)
+-------------------
+- Add JavaScript RegEx (Trim Leading and Trailing)
+- Change name class for row when save changes
+  
+  Old name -> `warningClass: 'warning'`
+  
+  New name -> `successClass: 'success'`
+  
+- Add Class for prohibiting cell editing
+  
+  Default -> `noEditClass: 'noedit'`
+  
+  E.G: `<td class="noedit">Some Text</td>`
+  
+ - Add Class for toolbar header column. You can use for setting `no-sort` in DataTable plugin 
+ 
+    Default -> `toolbarHeaderClass: ''`
+  
+- Automatically setting CSRFToken from cookie csrftoken from sending method.
+- Fix count of character for textarea element.
+- Add new element type (input => date). Is not supported in Firefox, or Internet Explorer 11 and earlier versions
+
+```
+// [[column_index, input_name, input_type_date]
+
+[4, 'col4', 'date'],
+```
+
+
+v1.2.6 (2017/08/14)
+-------------------
+- New - Different type of input Element, supported type "input", "hidden", "number", "select", "textarea"
+- New - Methods for plugin 'init' , 'destroy' ,  'update'
+- New - Option for debug mode -> debug: true.
+- New - Get token for ajax request form cookie
+- New - Attributes for textarea, supported atrributes are "rows", "cols", "maxlength", "wrap"
+- New - Count for textarea
+- Fix typo
+
+v1.2.5 (2017/08/13)
+-------------------
+- Updated 'example.php' file
+- Improved language localization
+- Improved Ajax request to server with callback function
+- Stop submit normaly form
+- Fix typo
+
+v1.2.4 (2017/08/12)
+-------------------
+- Added language localization
+- Added option for send server method
+- Added $.trim for value
+- Updated 'example.php' file
+- Fix typo
+
 v1.2.3 (2015/04/20)
 -------------------
 - Added 'bower.json' to use this package manager
