@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Ss;
 use App\Models\Iku;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class IkuController extends Controller
+class SsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +17,16 @@ class IkuController extends Controller
      */
     public function index()
     {
-        //
-        return view('iku.index');
+        $data = Iku::all();
+        return view('Ss.index', compact('data'));
     }
 
     public function fetch_data()
     {
-        return DataTables::of(Iku::all())->toJson();
+        $joinData = DB::select("SELECT tb_ss.id, tb_ss.Kode_SS, tb_ss.Sasaran, tb_ik.Kode_IK, tb_ik.Indikator_Kinerja
+                        FROM tb_ss INNER JOIN tb_ik
+                        ON tb_ss.Kode_IK = tb_ik.Kode_IK;");
+        return DataTables::of($joinData)->toJson();
     }
 
     public function action(Request $request)
@@ -32,11 +37,11 @@ class IkuController extends Controller
 
             // update atau delete program
             if ($request->action == 'edit') {
-                Iku::where('id', $request->id)->update($data);
+                Ss::where('id', $request->id)->update($data);
             }
 
             if ($request->action == 'delete') {
-                Iku::where('id', $request->id)->delete();
+                Ss::where('id', $request->id)->delete();
             }
 
             return response()->json($request);
@@ -52,11 +57,12 @@ class IkuController extends Controller
     public function store(Request $req)
     {
         $data = [
-            "Kode_IK" => $req->Kode_IK,
-            "Indikator_Kinerja" => $req->Indikator_Kinerja
+            "Kode_SS" => $req->Kode_SS,
+            "Sasaran" => $req->Sasaran,
+            "Kode_IK" => $req->Kode_IK
         ];
 
-        Iku::create($data);
+        Ss::create($data);
         return response()->json(['success'=> 'Berhasil menyimpan data']);
     }
 

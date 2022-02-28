@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kegiatan;
 use Illuminate\Http\Request;
-use App\Models\Iku;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
-class IkuController extends Controller
+class KegiatanController extends Controller
 {
+   
     /**
      * Display a listing of the resource.
      *
@@ -15,13 +17,12 @@ class IkuController extends Controller
      */
     public function index()
     {
-        //
-        return view('iku.index');
+        return view('kegiatan.index');
     }
 
     public function fetch_data()
     {
-        return DataTables::of(Iku::all())->toJson();
+        return DataTables::of(Kegiatan::all())->toJson();
     }
 
     public function action(Request $request)
@@ -32,11 +33,11 @@ class IkuController extends Controller
 
             // update atau delete program
             if ($request->action == 'edit') {
-                Iku::where('id', $request->id)->update($data);
+                Kegiatan::where('id', $request->id)->update($data);
             }
 
             if ($request->action == 'delete') {
-                Iku::where('id', $request->id)->delete();
+                Kegiatan::where('id', $request->id)->delete();
             }
 
             return response()->json($request);
@@ -52,11 +53,11 @@ class IkuController extends Controller
     public function store(Request $req)
     {
         $data = [
-            "Kode_IK" => $req->Kode_IK,
-            "Indikator_Kinerja" => $req->Indikator_Kinerja
+            "Kd_Kegiatan" => $req->Kd_Kegiatan,
+            "Uraian_Kegiatan" => $req->Uraian_Kegiatan
         ];
 
-        Iku::create($data);
+        Kegiatan::create($data);
         return response()->json(['success'=> 'Berhasil menyimpan data']);
     }
 

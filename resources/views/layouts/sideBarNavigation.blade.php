@@ -8,10 +8,10 @@
         <ul>
             <li> <a href="{{ route('iku.index') }}"><i class="bx bx-right-arrow-alt"></i>Iku</a>
             </li>
-            <li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>Sasaran</a>
+            <li> <a href="{{ route('ss.index') }}"><i class="bx bx-right-arrow-alt"></i>Sasaran</a>
             </li>
             <li> <a href="{{ route('program.index') }}"><i class="bx bx-right-arrow-alt"></i>Program</a>
-            <li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>kegiatan</a>
+            <li> <a href="{{ route('kegiatan.index') }}"><i class="bx bx-right-arrow-alt"></i>kegiatan</a>
             </li>
         </ul>
     </li>
@@ -21,6 +21,11 @@
             <div class="parent-icon"><i class='bx bx-cookie'></i>
             </div>
             <div class="menu-title">Widgets</div>
+        </a>
+        <a href="{{ route('kk.index') }}">
+            <div class="parent-icon"><i class='bx bx-grid'></i>
+            </div>
+            <div class="menu-title">Data KK</div>
         </a>
     </li>
 </ul>

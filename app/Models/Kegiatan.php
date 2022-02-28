@@ -4,14 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Ss;
 
-class Iku extends Model
+class Kegiatan extends Model
 {
     use HasFactory;
-     protected $table = 'tb_ik';
+     protected $table = 'tb_keg';
      protected $fillable= [
-            "Kode_IK",
-            "Indikator_Kinerja"
+            "Kd_Kegiatan",
+            "Uraian_Kegiatan"
      ];
 }
