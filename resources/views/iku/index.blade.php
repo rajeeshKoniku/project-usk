@@ -105,24 +105,33 @@
                         identifier: [0, 'id'],
                         editable: [
                             [1, 'Kode_IK'],
-                            [2, 'Indikator_Kinerja']
+                            [2, 'Indikator_Kinerja','textarea', '{"rows": "5", "maxlength": "255", "wrap": "hard"}']
                         ]
                     },
                     restoreButton: false,
                     buttons: {
+                         edit: {
+                            class: 'btn btn-sm btn-success m-1',
+                            html: '<span class="lni lni-pencil"></span>',
+                            action: 'edit'
+                        },
                         delete: {
                             class: 'btn btn-sm btn-danger m-1',
                             html: '<span class="lni lni-trash"></span>',
                             action: 'delete'
                         },
-                        edit: {
-                            class: 'btn btn-sm btn-success m-1',
-                            html: '<span class="lni lni-pencil"></span>',
-                            action: 'edit'
+                        save: {
+                            class: 'btn btn-sm btn-success',
+                            html: 'Save'
+                        },
+                        restore: {
+                            class: 'btn btn-sm btn-warning',
+                            html: 'Restore',
+                            action: 'restore'
                         },
                         confirm: {
-                            class: 'btn btn-sm btn-light',
-                            html: 'Yakin?'
+                            class: 'btn btn-sm btn-danger',
+                            html: 'Confirm'
                         }
                     },
                     onSuccess: function(data, textStatus, jqXHR) {
