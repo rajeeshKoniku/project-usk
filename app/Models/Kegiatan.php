@@ -11,6 +11,12 @@ class Kegiatan extends Model
      protected $table = 'tb_keg';
      protected $fillable= [
             "Kd_Kegiatan",
-            "Uraian_Kegiatan"
+            "Uraian_Kegiatan",
+            "program_id"
      ];
+
+     public function program()
+     {
+         return $this->belongsTo(Program::class);
+     }
 }

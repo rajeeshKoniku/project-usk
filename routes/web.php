@@ -6,6 +6,7 @@ use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SsController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KkController;
+use App\Models\Iku;
 use App\Models\Program;
 
 /*
@@ -51,7 +52,6 @@ Route::get('/kk/data', [KkController::class, 'fetch_data'])->name('kk.fetch_data
 Route::post('/kk/tambah', [KkController::class, 'store'])->name('kk.store');
 Route::post('/kk/aksi', [KkController::class, 'action'])->name('kk.action');
 
-// Route::get('/tes', function () {
-//     $programs = Program::all();
-//     return view("tes", compact('programs'));
-// });
+Route::get('/tes', function () {
+    return Iku::with('ss')->get();
+});

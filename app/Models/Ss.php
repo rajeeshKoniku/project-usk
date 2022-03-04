@@ -14,7 +14,15 @@ class Ss extends Model
     protected $fillable= [
            'Kode_SS',
            'Sasaran',
-           'Kode_IK'
     ];
 
+    /**
+     * Get all of the ik for the Ss
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ik()
+    {
+        return $this->hasMany(Iku::class, 'ik_id');
+    }
 }

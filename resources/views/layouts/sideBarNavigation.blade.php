@@ -6,13 +6,10 @@
             <div class="menu-title">Mastering Data</div>
         </a>
         <ul>
-            <li> <a href="{{ route('iku.index') }}"><i class="bx bx-right-arrow-alt"></i>Iku</a>
-            </li>
-            <li> <a href="{{ route('ss.index') }}"><i class="bx bx-right-arrow-alt"></i>Sasaran</a>
-            </li>
-            <li> <a href="{{ route('program.index') }}"><i class="bx bx-right-arrow-alt"></i>Program</a>
-            <li> <a href="{{ route('kegiatan.index') }}"><i class="bx bx-right-arrow-alt"></i>kegiatan</a>
-            </li>
+            <li> <a href="{{ route('ss.index') }}"><i class="bx bx-right-arrow-alt"></i>Sasaran</a></li>
+            <li> <a href="{{ route('iku.index') }}"><i class="bx bx-right-arrow-alt"></i>Iku</a></li>
+            <li> <a href="{{ route('program.index') }}"><i class="bx bx-right-arrow-alt"></i>Program</a></li>
+            <li> <a href="{{ route('kegiatan.index') }}"><i class="bx bx-right-arrow-alt"></i>kegiatan</a></li>
         </ul>
     </li>
     <li class="menu-label">UI Elements</li>

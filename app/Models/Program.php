@@ -12,6 +12,27 @@ class Program extends Model
 
     protected $fillable= [
            'Kd_Program',
-           'Program'
+           'Program',
+           'ik_id'
     ];
+
+    /**
+     * Get the ik that owns the Program
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function ik()
+    {
+        return $this->belongsTo(Iku::class);
+    }
+
+    /**
+     * Get all of the kegiatan for the Program
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function kegiatan()
+    {
+        return $this->hasMany(Kegiatan::class, 'program_id');
+    }
 }

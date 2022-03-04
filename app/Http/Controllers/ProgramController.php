@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Iku;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -16,12 +17,12 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        return view("program.index");
-    }
+        $ikData =Iku::all();
+        return view('program.index', compact('ikData'));    }
 
     public function fetch_data()
     {
-        return DataTables::of(Program::all())->toJson();
+        return DataTables::of(Program::with('ik'))->toJson();
     }
 
     /**
@@ -35,6 +36,7 @@ class ProgramController extends Controller
         $data = [
             "Kd_Program" => $request->Kd_Program,
             "Program" => $request->Program,
+            "ik_id" => $request->ik_id,
         ];
 
         $program = Program::create($data);

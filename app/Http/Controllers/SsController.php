@@ -17,16 +17,13 @@ class SsController extends Controller
      */
     public function index()
     {
-        $data = Iku::all();
-        return view('Ss.index', compact('data'));
+        return view('Ss.index');
     }
 
     public function fetch_data()
     {
-        $joinData = DB::select("SELECT tb_ss.id, tb_ss.Kode_SS, tb_ss.Sasaran, tb_ik.Kode_IK, tb_ik.Indikator_Kinerja
-                        FROM tb_ss INNER JOIN tb_ik
-                        ON tb_ss.Kode_IK = tb_ik.Kode_IK;");
-        return DataTables::of($joinData)->toJson();
+        $data = Ss::all();
+        return DataTables::of($data)->toJson();
     }
 
     public function action(Request $request)
@@ -63,7 +60,6 @@ class SsController extends Controller
         ];
 
         Ss::create($data);
-        return response()->json(['success'=> 'Berhasil menyimpan data']);
+        return response()->json(['success' => 'Berhasil menyimpan data']);
     }
-
 }

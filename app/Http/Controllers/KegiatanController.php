@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kegiatan;
+use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class KegiatanController extends Controller
 {
-   
+
     /**
      * Display a listing of the resource.
      *
@@ -17,12 +18,13 @@ class KegiatanController extends Controller
      */
     public function index()
     {
-        return view('kegiatan.index');
+        $programData = Program::all();
+        return view('kegiatan.index', compact('programData'));
     }
 
     public function fetch_data()
     {
-        return DataTables::of(Kegiatan::all())->toJson();
+        return DataTables::of(Kegiatan::with('program'))->toJson();
     }
 
     public function action(Request $request)
@@ -53,6 +55,7 @@ class KegiatanController extends Controller
     public function store(Request $req)
     {
         $data = [
+            "program_id" => $req->program_id,
             "Kd_Kegiatan" => $req->Kd_Kegiatan,
             "Uraian_Kegiatan" => $req->Uraian_Kegiatan
         ];

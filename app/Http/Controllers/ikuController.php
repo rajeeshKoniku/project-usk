@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Iku;
+use App\Models\Ss;
 use Yajra\DataTables\Facades\DataTables;
 
 class IkuController extends Controller
@@ -15,13 +16,13 @@ class IkuController extends Controller
      */
     public function index()
     {
-        //
-        return view('iku.index');
+        $ssData = Ss::all();
+        return view('iku.index', compact('ssData'));
     }
 
     public function fetch_data()
     {
-        return DataTables::of(Iku::all())->toJson();
+        return DataTables::of(Iku::with('ss'))->toJson();
     }
 
     public function action(Request $request)
@@ -53,7 +54,8 @@ class IkuController extends Controller
     {
         $data = [
             "Kode_IK" => $req->Kode_IK,
-            "Indikator_Kinerja" => $req->Indikator_Kinerja
+            "Indikator_Kinerja" => $req->Indikator_Kinerja,
+            "ss_id" => $req->ss_id
         ];
 
         Iku::create($data);
