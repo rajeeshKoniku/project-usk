@@ -187,19 +187,28 @@
                     },
                     restoreButton: false,
                     buttons: {
+                          edit: {
+                            class: 'btn btn-sm btn-success m-1',
+                            html: '<span class="lni lni-pencil"></span>',
+                            action: 'edit'
+                        },
                         delete: {
                             class: 'btn btn-sm btn-danger m-1',
                             html: '<span class="lni lni-trash"></span>',
                             action: 'delete'
                         },
-                        edit: {
-                            class: 'btn btn-sm btn-success m-1',
-                            html: '<span class="lni lni-pencil"></span>',
-                            action: 'edit'
+                        save: {
+                            class: 'btn btn-sm btn-success',
+                            html: 'Save'
+                        },
+                        restore: {
+                            class: 'btn btn-sm btn-warning',
+                            html: 'Restore',
+                            action: 'restore'
                         },
                         confirm: {
-                            class: 'btn btn-sm btn-light',
-                            html: 'Yakin?'
+                            class: 'btn btn-sm btn-danger',
+                            html: 'Confirm'
                         }
                     },
                     onSuccess: function(data, textStatus, jqXHR) {
