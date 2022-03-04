@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Ik;
+use App\Models\Program;
+use App\Models\Ss;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +16,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+      Ss::factory()->count(3)->has(
+            Ik::factory()->count(20)->kodeIk()->has(
+                Program::factory()->count(3)->kodeProg()
+            )
+        )->create();
     }
 }

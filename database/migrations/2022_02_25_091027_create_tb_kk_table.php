@@ -15,14 +15,14 @@ class CreateTbKkTable extends Migration
     {
         Schema::create('tb_kk', function (Blueprint $t) {
             $t->id();
-            $t->string('Kode_IK');
-            $t->text('Indikator_Kinerja');
-            $t->string('Pk_Menteri');
+            $t->foreignId('ik_id');
+            $t->text('indikator_kinerja');
+            $t->string('pk_menteri');
             $t->string('tw_1');
             $t->string('tw_2');
             $t->string('tw_3');
             $t->string('tw_4');
-            $t->string('Bobot');
+            $t->string('bobot');
             $t->timestamps();
         });
     }

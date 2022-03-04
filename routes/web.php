@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IkuController;
+use App\Http\Controllers\IkController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SsController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KkController;
-use App\Models\Iku;
+use App\Models\Ik;
 use App\Models\Program;
+use App\Models\Ss;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,11 +23,11 @@ use App\Models\Program;
 
 Route::get('/', 'App\Http\Controllers\homeController@home');
 
-//Iku Controller
-Route::get('/iku', [IkuController::class, 'index'])->name('iku.index');
-Route::get('/iku/data', [IkuController::class, 'fetch_data'])->name('iku.fetch_data');
-Route::post('/iku/tambah', [IkuController::class, 'store'])->name('iku.store');
-Route::post('/iku/aksi', [IkuController::class, 'action'])->name('iku.action');
+//Ik Controller
+Route::get('/ik', [IkController::class, 'index'])->name('ik.index');
+Route::get('/ik/data', [IkController::class, 'fetch_data'])->name('ik.fetch_data');
+Route::post('/ik/tambah', [IkController::class, 'store'])->name('ik.store');
+Route::post('/ik/aksi', [IkController::class, 'action'])->name('ik.action');
 
 //Ss Controller
 Route::get('/ss', [SsController::class, 'index'])->name('ss.index');
@@ -53,5 +54,6 @@ Route::post('/kk/tambah', [KkController::class, 'store'])->name('kk.store');
 Route::post('/kk/aksi', [KkController::class, 'action'])->name('kk.action');
 
 Route::get('/tes', function () {
-    return Iku::with('ss')->get();
+    $ss = Ss::pluck('kode_ss', 'id');
+    return dd($ss);
 });

@@ -20,12 +20,12 @@
                     className: "hide_column"
                 },
                 {
-                    data: "Kode_SS",
-                    name: "Kode_SS",
+                    data: "kode_ss",
+                    name: "kode_ss",
                 },
                 {
-                    data: "Sasaran",
-                    name: "Sasaran"
+                    data: "sasaran",
+                    name: "sasaran"
                 },
             ],
             dom: 'Bflrtip',
@@ -47,8 +47,8 @@
                 columns: {
                     identifier: [0, 'id'],
                     editable: [
-                        [1, 'Kode_SS'],
-                        [2, 'Sasaran', '{"rows": "5", "maxlength": "255", "wrap": "hard"}'],
+                        [1, 'kode_ss'],
+                        [2, 'sasaran', '{"rows": "5", "maxlength": "255", "wrap": "hard"}'],
                     ]
                 },
                 restoreButton: false,
@@ -92,20 +92,20 @@
         $('#form').submit(function(e) {
             e.preventDefault();
 
-            let Kode_SS = $('#Kode_SS').val();
-            let Sasaran = $('#Sasaran').val();
+            let kode_ss = $('#kode_ss').val();
+            let sasaran = $('#sasaran').val();
 
             $.ajax({
                 url: "{{ route('ss.store') }}",
                 type: 'POST',
                 data: {
-                    Kode_SS,
-                    Sasaran
+                    kode_ss,
+                    sasaran
                 },
                 success: function(data) {
                     // console.log(data);
-                    $('#Kode_SS').val('');
-                    $('#Sasaran').val('');
+                    $('#kode_ss').val('');
+                    $('#sasaran').val('');
 
                     // setelah berhasil, reload tabelSs
                     $('#tabelSs').DataTable().ajax.reload();

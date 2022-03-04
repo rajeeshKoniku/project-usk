@@ -8,8 +8,8 @@
             <form id="form" role="form">
                 <div class="modal-body">
                     {{-- form --}}
-                        <x-input name="Kode_SS" value="Kode SS" type="text"></x-input>
-                        <x-textarea name="Sasaran" value="Sasaran"></x-textarea>
+                        <x-input name="kode_ss" value="Kode SS" type="text"></x-input>
+                        <x-textarea name="sasaran" value="Sasaran"></x-textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

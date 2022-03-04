@@ -24,9 +24,9 @@
     </div>
 
 
-    @include('iku.modalTambah')
+    @include('ik.modalTambah')
 @endsection
 
 @push('scripts')
-    @include('iku.script')
+    @include('ik.script')
 @endpush

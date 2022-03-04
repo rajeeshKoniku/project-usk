@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Iku;
+use App\Models\Ik;
 
 class Ss extends Model
 {
@@ -12,8 +12,8 @@ class Ss extends Model
     protected $table = 'tb_ss';
 
     protected $fillable= [
-           'Kode_SS',
-           'Sasaran',
+           'kode_ss',
+           'sasaran',
     ];
 
     /**
@@ -23,6 +23,6 @@ class Ss extends Model
      */
     public function ik()
     {
-        return $this->hasMany(Iku::class, 'ik_id');
+        return $this->hasMany(Ik::class, 'ss_id');
     }
 }

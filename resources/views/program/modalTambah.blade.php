@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tambahModalLabel">Tambah Program</h5>
+                <h5 class="modal-title" id="tambahModalLabel">Tambah program</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -10,11 +10,11 @@
                 <form>
                     <x-select name="ik_id" value="IK ID">
                         @foreach ($ikData as $item)
-                            <option class="text-light" value="{{$item->id}}">{{$item->Kode_IK}}</option>
+                            <option class="text-light" value="{{$item->id}}">{{$item->kode_ik}}</option>
                         @endforeach
                     </x-select>
-                    <x-input name="Kd_Program" value="KD Program" type="text"></x-input>
-                    <x-textarea name="Program" value="Program"></x-textarea>
+                    <x-input name="kode_prog" value="KD program" type="text"></x-input>
+                    <x-textarea name="program" value="program"></x-textarea>
                 </form>
             </div>
             <div class="modal-footer">

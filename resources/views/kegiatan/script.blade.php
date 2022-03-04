@@ -20,16 +20,16 @@
                     className: "hide_column"
                 },
                 {
-                    data: "program.Kd_Program",
-                    name: "program.Kd_Program",
+                    data: "program.kode_prog",
+                    name: "program.kode_prog",
                 },
                 {
-                    data: "Kd_Kegiatan",
-                    name: "Kd_Kegiatan"
+                    data: "kode_keg",
+                    name: "kode_keg"
                 },
                 {
-                    data: "Uraian_Kegiatan",
-                    name: "Uraian_Kegiatan"
+                    data: "uraian_kegiatan",
+                    name: "uraian_kegiatan"
                 },
             ],
             dom: 'Bflrtip',
@@ -51,8 +51,8 @@
                 columns: {
                     identifier: [0, 'id'],
                     editable: [
-                        [2, 'Kd_Kegiatan'],
-                        [3, 'Uraian_Kegiatan', '{"rows": "5", "maxlength": "255", "wrap": "hard"}'],
+                        [2, 'kode_keg'],
+                        [3, 'uraian_kegiatan', '{"rows": "5", "maxlength": "255", "wrap": "hard"}'],
                     ]
                 },
                 restoreButton: false,
@@ -96,22 +96,22 @@
         $('#form').submit(function(e) {
             e.preventDefault();
 
-            let Kd_Kegiatan = $('#Kd_Kegiatan').val();
-            let Uraian_Kegiatan = $('#Uraian_Kegiatan').val();
+            let kode_keg = $('#kode_keg').val();
+            let uraian_kegiatan = $('#uraian_kegiatan').val();
             let program_id = $('#program_id').val();
 
             $.ajax({
                 url: "{{ route('kegiatan.store') }}",
                 type: 'POST',
                 data: {
-                    Kd_Kegiatan,
-                    Uraian_Kegiatan,
+                    kode_keg,
+                    uraian_kegiatan,
                     program_id
                 },
                 success: function(data) {
                     // console.log(data);
-                    $('#Kd_Kegiatan').val('');
-                    $('#Uraian_Kegiatan').val('');
+                    $('#kode_keg').val('');
+                    $('#uraian_kegiatan').val('');
                     $('#program_id').val('');
 
                     // setelah berhasil, reload tabelKegiatan

@@ -10,11 +10,11 @@
                     {{-- form --}}
                     <x-select name="program_id" value="Kode Program">
                         @foreach ($programData as $item)
-                            <option class="text-light" value="{{ $item->id }}">{{ $item->Kd_Program }}</option>
+                            <option class="text-light" value="{{ $item->id }}">{{ $item->kode_prog }}</option>
                         @endforeach
                     </x-select>
-                    <x-input name="Kd_Kegiatan" value="Kode Kegiatan" type="text"></x-input>
-                    <x-textarea name="Uraian_Kegiatan" value="Uraian Kegiatan"></x-textarea>
+                    <x-input name="kode_keg" value="Kode Kegiatan" type="text"></x-input>
+                    <x-textarea name="uraian_kegiatan" value="Uraian Kegiatan"></x-textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

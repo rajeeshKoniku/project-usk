@@ -11,7 +11,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>KD IKU</th>
+                                <th>KD IK</th>
                                 <th>KD Program</th>
                                 <th>Program</th>
                             </tr>

@@ -18,16 +18,16 @@
                     className: "hide_column"
 
                 }, {
-                    data: "ik.Kode_IK",
-                    name: "ik.Kode_IK"
+                    data: "ik.kode_ik",
+                    name: "ik.kode_ik"
                 },
                 {
-                    data: "Kd_Program",
-                    name: "Kd_Program",
+                    data: "kode_prog",
+                    name: "kode_prog",
                 },
                 {
-                    data: "Program",
-                    name: "Program"
+                    data: "program",
+                    name: "program"
                 },
             ],
             dom: 'Bflrtip',
@@ -50,8 +50,8 @@
                 columns: {
                     identifier: [0, 'id'],
                     editable: [
-                        [2, 'Kd_Program'],
-                        [3, 'Program', 'textarea',
+                        [2, 'kode_prog'],
+                        [3, 'program', 'textarea',
                             '{"rows": "5", "maxlength": "255", "wrap": "hard"}'
                         ]
                     ]
@@ -95,22 +95,22 @@
 
         //////////////// tambah program ////////////////////////
         $('#save').click(function() {
-            let Kd_Program = $('#Kd_Program').val();
-            let Program = $('#Program').val();
+            let kode_prog = $('#kode_prog').val();
+            let program = $('#program').val();
             let ik_id = $('#ik_id').val()
 
             $.ajax({
                 url: "{{ route('program.store') }}",
                 type: 'POST',
                 data: {
-                    Kd_Program,
-                    Program,
+                    kode_prog,
+                    program,
                     ik_id
                 },
                 success: function(data) {
                     // console.log(data);
-                    $('#Program').val('');
-                    $('#Kd_Program').val('');
+                    $('#program').val('');
+                    $('#kode_prog').val('');
                     $('#ik_id').val('');
 
                     // setelah berhasil, reload tabelProgram

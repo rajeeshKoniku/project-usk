@@ -13,12 +13,12 @@
                                 <th>ID</th>
                                 <th>Kode IK</th>
                                 <th>Indikator Kinerja</th>
-                                <th>Pk_Menteri</th>
+                                <th>pk_menteri</th>
                                 <td>TW_1</td>
                                 <td>TW_2</td>
                                 <td>TW_3</td>
                                 <td>TW_4</td>
-                                <td>Bobot</td>
+                                <td>bobot</td>
                                 <td>Aksi</td>
                             </tr>
                         </thead>
@@ -42,20 +42,20 @@
                     {{-- form --}}
                     <form>
                         <div class="mb-3 row">
-                            <label for="Kode_IK" class="col-sm-2 col-form-label">Kode IK</label>
+                            <label for="kode_ik" class="col-sm-2 col-form-label">Kode IK</label>
                             <div class="col-sm-10">
-                                <select class="form-control bg-dark" style="width: XXXpx;" name="Kode_IK" id="Kode_IK">
+                                <select class="form-control bg-dark" style="width: XXXpx;" name="kode_ik" id="kode_ik">
                                     <?php foreach ( $data as $x ) { ?>
-                                        <option value="<?php echo $x->Kode_IK; ?>"> <?php echo $x->Kode_IK; ?> || <?php echo $x->Indikator_Kinerja; }?></option>
+                                        <option value="<?php echo $x->kode_ik; ?>"> <?php echo $x->kode_ik; ?> || <?php echo $x->indikator_kinerja; }?></option>
                                 </select>
-                                {{-- <input type="text" class="form-control text-light px-2" name="Kode_IK" id="Kode_IK"> --}}
+                                {{-- <input type="text" class="form-control text-light px-2" name="kode_ik" id="kode_ik"> --}}
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="Pk_Menteri" class="col-sm-2 col-form-label">Pk Menteri</label>
+                            <label for="pk_menteri" class="col-sm-2 col-form-label">Pk Menteri</label>
                             <div class="col-sm-10">
-                                 <input type="text" class="form-control text-light px-2" name="Pk_Menteri" id="Pk_Menteri">
+                                 <input type="text" class="form-control text-light px-2" name="pk_menteri" id="pk_menteri">
                             </div>
                         </div>
 
@@ -88,9 +88,9 @@
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="Bobot" class="col-sm-2 col-form-label"> Bobot</label>
+                            <label for="bobot" class="col-sm-2 col-form-label"> bobot</label>
                             <div class="col-sm-10">
-                                 <input type="text" class="form-control text-light px-2" name="Bobot" id="Bobot">
+                                 <input type="text" class="form-control text-light px-2" name="bobot" id="bobot">
                             </div>
                         </div>
 
@@ -126,16 +126,16 @@
                         name: "id"
                     },
                     {
-                        data: "Kode_IK",
-                        name: "Kode_IK",
+                        data: "kode_ik",
+                        name: "kode_ik",
                     },
                     {
-                        data: "Indikator_Kinerja",
-                        name: "Indikator_Kinerja",
+                        data: "indikator_kinerja",
+                        name: "indikator_kinerja",
                     },
                     {
-                        data: "Pk_Menteri",
-                        name: "Pk_Menteri"
+                        data: "pk_menteri",
+                        name: "pk_menteri"
                     },
                     {
                         data: "tw_1",
@@ -154,8 +154,8 @@
                         name: "tw_4"
                     },
                     {
-                        data: "Bobot",
-                        name: "Bobot"
+                        data: "bobot",
+                        name: "bobot"
                     },
                 ],
                 dom: 'Bflrtip',
@@ -177,12 +177,12 @@
                     columns: {
                         identifier: [0, 'id'],
                         editable: [
-                            [3 ,'Pk_Menteri'],
+                            [3 ,'pk_menteri'],
                             [4 ,'tw_1'],
                             [5 ,'tw_2'],
                             [6 ,'tw_3'],
                             [7 ,'tw_4'],
-                            [8 ,'Bobot']
+                            [8 ,'bobot']
                         ]
                     },
                     restoreButton: false,
@@ -225,35 +225,35 @@
 
             //////////////// tambah program ////////////////////////
             $('#save').click(function() {
-                let Kode_IK = $('#Kode_IK').val();
-                let Pk_Menteri = $('#Pk_Menteri').val();
+                let kode_ik = $('#kode_ik').val();
+                let pk_menteri = $('#pk_menteri').val();
                 let tw_1 = $('#tw_1').val();
                 let tw_2 = $('#tw_2').val();
                 let tw_3 = $('#tw_3').val();
                 let tw_4 = $('#tw_4').val();
-                let Bobot = $('#Bobot').val();
-                
+                let bobot = $('#bobot').val();
+
                 $.ajax({
                     url: "{{ route('kk.store') }}",
                     type: 'POST',
                     data: {
-                        Kode_IK,
-                        Pk_Menteri,
+                        kode_ik,
+                        pk_menteri,
                         tw_1,
                         tw_2,
                         tw_3,
                         tw_4,
-                        Bobot
+                        bobot
                     },
                     success: function(data) {
                         // console.log(data);
-                        $('#Kode_IK').val('')
-                        $('#Pk_Menteri').val('')
+                        $('#kode_ik').val('')
+                        $('#pk_menteri').val('')
                         $('#tw_1').val('')
                         $('#tw_2').val('')
                         $('#tw_3').val('')
                         $('#tw_4').val('')
-                        $('#Bobot').val('')
+                        $('#bobot').val('')
 
                         // setelah berhasil, reload tabelKk
                         $('#tabelKk').DataTable().ajax.reload();

@@ -6,18 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Ss;
 
-class Iku extends Model
+class Ik extends Model
 {
     use HasFactory;
      protected $table = 'tb_ik';
      protected $fillable= [
-            "Kode_IK",
-            "Indikator_Kinerja",
+            "kode_ik",
+            "indikator_kinerja",
             "ss_id"
      ];
 
      /**
-      * Get the ss that owns the Iku
+      * Get the ss that owns the Ik
       *
       * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
       */
@@ -27,11 +27,11 @@ class Iku extends Model
      }
 
      /**
-      * Get all of the programs for the Iku
+      * Get all of the programs for the Ik
       *
       * @return \Illuminate\Database\Eloquent\Relations\HasMany
       */
-     public function programs(): HasMany
+     public function programs()
      {
          return $this->hasMany(Program::class, 'ik_id');
      }

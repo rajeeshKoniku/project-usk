@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Iku;
-use App\Models\Program;
+use App\Models\Ik;
+use App\Models\program;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 
-class ProgramController extends Controller
+class programController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $ikData =Iku::all();
+        $ikData =Ik::all();
         return view('program.index', compact('ikData'));    }
 
     public function fetch_data()
@@ -34,8 +34,8 @@ class ProgramController extends Controller
     public function store(Request $request)
     {
         $data = [
-            "Kd_Program" => $request->Kd_Program,
-            "Program" => $request->Program,
+            "kode_prog" => $request->kode_prog,
+            "program" => $request->program,
             "ik_id" => $request->ik_id,
         ];
 
@@ -47,7 +47,7 @@ class ProgramController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Program  $program
+     * @param  \App\Models\program  $program
      * @return \Illuminate\Http\Response
      */
     public function action(Request $request)

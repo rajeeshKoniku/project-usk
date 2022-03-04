@@ -10,11 +10,11 @@
                 <form>
                     <x-select name="ss_id" value="SS ID">
                         @foreach ($ssData as $item)
-                            <option class="text-light" value="{{ $item->id }}">{{ $item->Kode_SS }}</option>
+                            <option class="text-light" value="{{ $item->id }}">{{ $item->kode_ss }}</option>
                         @endforeach
                     </x-select>
-                    <x-input type="text" name="Kode_IK" value="Kode IK" />
-                    <x-textarea type="text" name="Indikator_Kinerja" value="Indikator Kinerja" />
+                    <x-input type="text" name="kode_ik" value="Kode IK" />
+                    <x-textarea type="text" name="indikator_kinerja" value="Indikator Kinerja" />
                 </form>
             </div>
             <div class="modal-footer">

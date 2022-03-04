@@ -54,9 +54,8 @@ class SsController extends Controller
     public function store(Request $req)
     {
         $data = [
-            "Kode_SS" => $req->Kode_SS,
-            "Sasaran" => $req->Sasaran,
-            "Kode_IK" => $req->Kode_IK
+            "kode_ss" => $req->kode_ss,
+            "sasaran" => $req->sasaran,
         ];
 
         Ss::create($data);

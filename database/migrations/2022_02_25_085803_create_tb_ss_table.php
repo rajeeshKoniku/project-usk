@@ -15,9 +15,8 @@ class CreateTbSsTable extends Migration
     {
         Schema::create('tb_ss', function (Blueprint $t) {
             $t->id();
-            $t->string('Kode_SS');
-            $t->text('Sasaran');
-            $t->string('Kode_IK');
+            $t->string('kode_ss');
+            $t->text('sasaran');
             $t->timestamps();
         });
     }

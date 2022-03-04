@@ -10,8 +10,8 @@ class Kegiatan extends Model
     use HasFactory;
      protected $table = 'tb_keg';
      protected $fillable= [
-            "Kd_Kegiatan",
-            "Uraian_Kegiatan",
+            "kode_keg",
+            "uraian_kegiatan",
             "program_id"
      ];
 

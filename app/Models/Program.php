@@ -11,8 +11,8 @@ class Program extends Model
     protected $table = 'tb_prog';
 
     protected $fillable= [
-           'Kd_Program',
-           'Program',
+           'kode_prog',
+           'program',
            'ik_id'
     ];
 
@@ -23,7 +23,7 @@ class Program extends Model
      */
     public function ik()
     {
-        return $this->belongsTo(Iku::class);
+        return $this->belongsTo(Ik::class);
     }
 
     /**

@@ -15,8 +15,9 @@ class CreateTbKegTable extends Migration
     {
         Schema::create('tb_keg', function (Blueprint $t) {
             $t->id();
-            $t->string('Kd_Kegiatan');
-            $t->text('Uraian_Kegiatan');
+            $t->string('kode_keg');
+            $t->text('uraian_kegiatan');
+            $t->foreignId('program_id');
             $t->timestamps();
         });
     }

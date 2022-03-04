@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Iku;
+use App\Models\Ik;
 use App\Models\Ss;
 use Yajra\DataTables\Facades\DataTables;
 
-class IkuController extends Controller
+class IkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +17,12 @@ class IkuController extends Controller
     public function index()
     {
         $ssData = Ss::all();
-        return view('iku.index', compact('ssData'));
+        return view('ik.index', compact('ssData'));
     }
 
     public function fetch_data()
     {
-        return DataTables::of(Iku::with('ss'))->toJson();
+        return DataTables::of(Ik::with('ss'))->toJson();
     }
 
     public function action(Request $request)
@@ -33,11 +33,11 @@ class IkuController extends Controller
 
             // update atau delete program
             if ($request->action == 'edit') {
-                Iku::where('id', $request->id)->update($data);
+                Ik::where('id', $request->id)->update($data);
             }
 
             if ($request->action == 'delete') {
-                Iku::where('id', $request->id)->delete();
+                Ik::where('id', $request->id)->delete();
             }
 
             return response()->json($request);
@@ -53,12 +53,12 @@ class IkuController extends Controller
     public function store(Request $req)
     {
         $data = [
-            "Kode_IK" => $req->Kode_IK,
-            "Indikator_Kinerja" => $req->Indikator_Kinerja,
+            "kode_ik" => $req->kode_ik,
+            "indikator_kinerja" => $req->indikator_kinerja,
             "ss_id" => $req->ss_id
         ];
 
-        Iku::create($data);
+        Ik::create($data);
         return response()->json(['success'=> 'Berhasil menyimpan data']);
     }
 

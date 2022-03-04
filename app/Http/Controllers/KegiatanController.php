@@ -55,9 +55,9 @@ class KegiatanController extends Controller
     public function store(Request $req)
     {
         $data = [
+            "kode_keg" => $req->kode_keg,
+            "uraian_kegiatan" => $req->uraian_kegiatan,
             "program_id" => $req->program_id,
-            "Kd_Kegiatan" => $req->Kd_Kegiatan,
-            "Uraian_Kegiatan" => $req->Uraian_Kegiatan
         ];
 
         Kegiatan::create($data);

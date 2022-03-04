@@ -11,22 +11,22 @@
             "processing": true,
             "serverSide": true,
             "order": [],
-            "ajax": "{{ route('iku.fetch_data') }}",
+            "ajax": "{{ route('ik.fetch_data') }}",
             columns: [{
                     data: "id",
                     name: "id",
                     className: "hide_column"
                 },{
-                    data: "ss.Kode_SS",
-                    name: "ss.Kode_SS"
+                    data: "ss.kode_ss",
+                    name: "ss.kode_ss"
                 },
                 {
-                    data: "Kode_IK",
-                    name: "Kode_IK",
+                    data: "kode_ik",
+                    name: "kode_ik",
                 },
                 {
-                    data: "Indikator_Kinerja",
-                    name: "Indikator_Kinerja"
+                    data: "indikator_kinerja",
+                    name: "indikator_kinerja"
                 },
             ],
             dom: 'Bflrtip',
@@ -41,15 +41,15 @@
         // saat draw tabel, jalankan tabledit
         $('#tabelIku').on('draw.dt', function() {
             $('#tabelIku').Tabledit({
-                url: "{{ route('iku.action') }}",
+                url: "{{ route('ik.action') }}",
                 dataType: "json",
                 // eventType: 'dblclick', =====> pakai ini jika ingin doubleclick / tanpa edit button
                 // editButton: false,
                 columns: {
                     identifier: [0, 'id'],
                     editable: [
-                        [2, 'Kode_IK'],
-                        [3, 'Indikator_Kinerja', 'textarea',
+                        [2, 'kode_ik'],
+                        [3, 'indikator_kinerja', 'textarea',
                             '{"rows": "5", "maxlength": "255", "wrap": "hard"}'
                         ]
                     ]
@@ -94,22 +94,22 @@
 
         //////////////// tambah program ////////////////////////
         $('#save').click(function() {
-            let Kode_IK = $('#Kode_IK').val();
-            let Indikator_Kinerja = $('#Indikator_Kinerja').val();
+            let kode_ik = $('#kode_ik').val();
+            let indikator_kinerja = $('#indikator_kinerja').val();
             let ss_id = $('#ss_id').val();
 
             $.ajax({
-                url: "{{ route('iku.store') }}",
+                url: "{{ route('ik.store') }}",
                 type: 'POST',
                 data: {
-                    Kode_IK,
-                    Indikator_Kinerja,
+                    kode_ik,
+                    indikator_kinerja,
                     ss_id
                 },
                 success: function(data) {
                     // console.log(data);
-                    $('#Kode_IK').val('');
-                    $('#Indikator_Kinerja').val('');
+                    $('#kode_ik').val('');
+                    $('#indikator_kinerja').val('');
                     $('#ss_id').val('');
 
                     // setelah berhasil, reload tabelIku
