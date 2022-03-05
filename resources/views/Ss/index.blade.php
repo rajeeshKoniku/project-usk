@@ -70,7 +70,7 @@
     </div>
     </div>
 
-
+@push('scripts')
     <script type="text/javascript">
         $(document).ready(function() {
             $.ajaxSetup({
@@ -121,7 +121,7 @@
                 $('#tabelSs').Tabledit({
                     url: "{{ route('ss.action') }}",
                     dataType: "json",
-                    // eventType: 'dblclick', 
+                    // eventType: 'dblclick',
                     // editButton: false,
                     columns: {
                         identifier: [0, 'id'],
@@ -132,7 +132,8 @@
                         ]
                     },
                     restoreButton: false,
-                    bu edit: {
+                   buttons: {
+                        edit: {
                             class: 'btn btn-sm btn-success m-1',
                             html: '<span class="lni lni-pencil"></span>',
                             action: 'edit'
@@ -194,5 +195,7 @@
             })
         });
     </script>
+@endpush
+
 
 @endsection
