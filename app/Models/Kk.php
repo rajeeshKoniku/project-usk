@@ -11,13 +11,12 @@ class Kk extends Model
     protected $table = 'tb_kk';
 
     protected $fillable= [
-           'Kode_IK',
-           'Indikator_Kinerja',
-           'Pk_Menteri',
+           'ik_id',
+           'pk_menteri',
            'tw_1',
            'tw_2',
            'tw_3',
            'tw_4',
-           'Bobot',
+           'bobot',
     ];
 }

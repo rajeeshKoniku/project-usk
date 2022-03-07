@@ -15,9 +15,9 @@ class CreateTbIkTable extends Migration
     {
         Schema::create('tb_ik', function (Blueprint $t) {
             $t->id();
-            $t->string('Kode_IK');
-            $t->text('Indikator_Kinerja');
-            $t->string('Kd_Program');
+            $t->string('kode_ik');
+            $t->text('indikator_kinerja');
+            $t->foreignId('ss_id');
             $t->timestamps();
         });
     }

@@ -15,10 +15,10 @@ class CreateTbKomponenTable extends Migration
     {
         Schema::create('tb_komponen', function (Blueprint $t) {
             $t->id();
-            $t->text('Kebutuhan_Kegiatan');
-            $t->text('Rincian_Komponen');
-            $t->string('Akun');
-            $t->text('Jenis_Belanja');
+            $t->text('kebutuhan_kegiatan');
+            $t->text('rincian_komponen');
+            $t->string('akun');
+            $t->text('jenis_belanja');
             $t->timestamps();
         });
     }

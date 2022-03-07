@@ -1,6 +1,6 @@
 <!-- Menghubungkan dengan view template master -->
 @extends('layouts.layout')
-@section('judul', 'Halaman Home')
+@section('judul', 'Halaman KK')
 @section('content')
 
     <div class="container">
@@ -13,13 +13,12 @@
                                 <th>ID</th>
                                 <th>Kode IK</th>
                                 <th>Indikator Kinerja</th>
-                                <th>Pk_Menteri</th>
+                                <th>pk_menteri</th>
                                 <td>TW_1</td>
                                 <td>TW_2</td>
                                 <td>TW_3</td>
                                 <td>TW_4</td>
-                                <td>Bobot</td>
-                                <td>Aksi</td>
+                                <td>bobot</td>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -42,20 +41,20 @@
                     {{-- form --}}
                     <form>
                         <div class="mb-3 row">
-                            <label for="Kode_IK" class="col-sm-2 col-form-label">Kode IK</label>
+                            <label for="kode_ik" class="col-sm-2 col-form-label">Kode IK</label>
                             <div class="col-sm-10">
-                                <select class="form-control bg-dark" style="width: XXXpx;" name="Kode_IK" id="Kode_IK">
+                                <select class="form-control bg-dark" style="width: XXXpx;" name="ik_id" id="ik_id">
                                     <?php foreach ( $data as $x ) { ?>
-                                        <option value="<?php echo $x->Kode_IK; ?>"> <?php echo $x->Kode_IK; ?> || <?php echo $x->Indikator_Kinerja; }?></option>
+                                        <option value="<?php echo $x->kode_ik; ?>"> <?php echo $x->kode_ik; ?> || <?php echo $x->indikator_kinerja; }?></option>
                                 </select>
-                                {{-- <input type="text" class="form-control text-light px-2" name="Kode_IK" id="Kode_IK"> --}}
+                                {{-- <input type="text" class="form-control text-light px-2" name="kode_ik" id="kode_ik"> --}}
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="Pk_Menteri" class="col-sm-2 col-form-label">Pk Menteri</label>
+                            <label for="pk_menteri" class="col-sm-2 col-form-label">Pk Menteri</label>
                             <div class="col-sm-10">
-                                 <input type="text" class="form-control text-light px-2" name="Pk_Menteri" id="Pk_Menteri">
+                                 <input type="text" class="form-control text-light px-2" name="pk_menteri" id="pk_menteri">
                             </div>
                         </div>
 
@@ -88,9 +87,9 @@
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="Bobot" class="col-sm-2 col-form-label"> Bobot</label>
+                            <label for="bobot" class="col-sm-2 col-form-label"> bobot</label>
                             <div class="col-sm-10">
-                                 <input type="text" class="form-control text-light px-2" name="Bobot" id="Bobot">
+                                 <input type="text" class="form-control text-light px-2" name="bobot" id="bobot">
                             </div>
                         </div>
 
@@ -104,164 +103,9 @@
         </div>
     </div>
     </div>
-
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            // fetch/ambil data datatable
-            $('#tabelKk').DataTable({
-                "processing": true,
-                "serverSide": true,
-                "order": [],
-                "ajax": "{{ route('kk.fetch_data') }}",
-                columns: [
-                    {
-                        data: "id",
-                        name: "id"
-                    },
-                    {
-                        data: "Kode_IK",
-                        name: "Kode_IK",
-                    },
-                    {
-                        data: "Indikator_Kinerja",
-                        name: "Indikator_Kinerja",
-                    },
-                    {
-                        data: "Pk_Menteri",
-                        name: "Pk_Menteri"
-                    },
-                    {
-                        data: "tw_1",
-                        name: "tw_1"
-                    },
-                    {
-                        data: "tw_2",
-                        name: "tw_2"
-                    },
-                    {
-                        data: "tw_3",
-                        name: "tw_3"
-                    },
-                    {
-                        data: "tw_4",
-                        name: "tw_4"
-                    },
-                    {
-                        data: "Bobot",
-                        name: "Bobot"
-                    },
-                ],
-                dom: 'Bflrtip',
-                buttons: [{
-                    text: 'Tambah',
-                    action: function(e, dt, node, config) {
-                        $('#tambahModal').modal('show')
-                    }
-                }, 'copy', 'excel', 'pdf']
-            });
-
-            // saat draw tabel, jalankan tabledit
-            $('#tabelKk').on('draw.dt', function() {
-                $('#tabelKk').Tabledit({
-                    url: "{{ route('kk.action') }}",
-                    dataType: "json",
-                    // eventType: 'dblclick', =====> pakai ini jika ingin doubleclick / tanpa edit button
-                    // editButton: false,
-                    columns: {
-                        identifier: [0, 'id'],
-                        editable: [
-                            [3 ,'Pk_Menteri'],
-                            [4 ,'tw_1'],
-                            [5 ,'tw_2'],
-                            [6 ,'tw_3'],
-                            [7 ,'tw_4'],
-                            [8 ,'Bobot']
-                        ]
-                    },
-                    restoreButton: false,
-                    buttons: {
-                          edit: {
-                            class: 'btn btn-sm btn-success m-1',
-                            html: '<span class="lni lni-pencil"></span>',
-                            action: 'edit'
-                        },
-                        delete: {
-                            class: 'btn btn-sm btn-danger m-1',
-                            html: '<span class="lni lni-trash"></span>',
-                            action: 'delete'
-                        },
-                        save: {
-                            class: 'btn btn-sm btn-success',
-                            html: 'Save'
-                        },
-                        restore: {
-                            class: 'btn btn-sm btn-warning',
-                            html: 'Restore',
-                            action: 'restore'
-                        },
-                        confirm: {
-                            class: 'btn btn-sm btn-danger',
-                            html: 'Confirm'
-                        }
-                    },
-                    onSuccess: function(data, textStatus, jqXHR) {
-                        // console.log(data, textStatus, jqXHR);
-                        // jika aksi hapus maka hapus data dari baris dan reload tabelKk
-                        if (data.action == 'delete') {
-                            $('#' + data.id).remove()
-                            // $('#tabelKk').DataTable().ajax.reload();
-                            $('#tabelKk').Datatable().reload(null, false);
-                        }
-                    },
-                });
-            });
-
-            //////////////// tambah program ////////////////////////
-            $('#save').click(function() {
-                let Kode_IK = $('#Kode_IK').val();
-                let Pk_Menteri = $('#Pk_Menteri').val();
-                let tw_1 = $('#tw_1').val();
-                let tw_2 = $('#tw_2').val();
-                let tw_3 = $('#tw_3').val();
-                let tw_4 = $('#tw_4').val();
-                let Bobot = $('#Bobot').val();
-                
-                $.ajax({
-                    url: "{{ route('kk.store') }}",
-                    type: 'POST',
-                    data: {
-                        Kode_IK,
-                        Pk_Menteri,
-                        tw_1,
-                        tw_2,
-                        tw_3,
-                        tw_4,
-                        Bobot
-                    },
-                    success: function(data) {
-                        // console.log(data);
-                        $('#Kode_IK').val('')
-                        $('#Pk_Menteri').val('')
-                        $('#tw_1').val('')
-                        $('#tw_2').val('')
-                        $('#tw_3').val('')
-                        $('#tw_4').val('')
-                        $('#Bobot').val('')
-
-                        // setelah berhasil, reload tabelKk
-                        $('#tabelKk').DataTable().ajax.reload();
-                        $('#tambahModal').modal('hide');
-                    }
-                });
-            })
-        });
-    </script>
-
 @endsection
+
+@push('scripts')
+    @include('kk.script')
+@endpush
+

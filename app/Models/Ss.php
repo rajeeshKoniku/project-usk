@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Iku;
+use App\Models\Ik;
 
 class Ss extends Model
 {
@@ -12,9 +12,17 @@ class Ss extends Model
     protected $table = 'tb_ss';
 
     protected $fillable= [
-           'Kode_SS',
-           'Sasaran',
-           'Kode_IK'
+           'kode_ss',
+           'sasaran',
     ];
 
+    /**
+     * Get all of the ik for the Ss
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ik()
+    {
+        return $this->hasMany(Ik::class, 'ss_id');
+    }
 }

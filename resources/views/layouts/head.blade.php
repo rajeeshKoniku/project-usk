@@ -16,7 +16,7 @@
  <!-- Bootstrap CSS -->
  <link href="{!! asset('assets/') !!}/css/bootstrap.min.css" rel="stylesheet">
  <link href="{!! asset('assets/') !!}/css/bootstrap-extended.css" rel="stylesheet">
- <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet"> -->
+ <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
  <link href="{!! asset('assets/') !!}/css/app.css" rel="stylesheet">
  <link href="{!! asset('assets/') !!}/css/icons.css" rel="stylesheet">
 

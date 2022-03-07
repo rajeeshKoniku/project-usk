@@ -15,10 +15,9 @@ class CreateTbKegiatanTable extends Migration
     {
         Schema::create('tb_kegiatan', function (Blueprint $t) {
             $t->id();
-            $t->string('Kd_Kegiatan');
-            $t->text('Uraian_Kegiatan');
-            $t->text('Rencana_Jadwal_Pelaksanaan');
-            $t->text('Kebutuhan_Kegiatan');
+            $t->string('kode_kegiatan');
+            $t->text('uraian_kegiatan');
+            $t->text('program_id');
             $t->timestamps();
         });
     }

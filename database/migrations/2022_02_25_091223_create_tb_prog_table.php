@@ -15,9 +15,9 @@ class CreateTbProgTable extends Migration
     {
         Schema::create('tb_prog', function (Blueprint $t) {
             $t->id();
-            $t->string('Kd_Program');
-            $t->text('Program');
-            $t->string('Kd_Kegiatan');
+            $t->foreignId('ik_id');
+            $t->string('kode_prog');
+            $t->text('program');
             $t->timestamps();
         });
     }

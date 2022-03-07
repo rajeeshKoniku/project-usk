@@ -11,7 +11,28 @@ class Program extends Model
     protected $table = 'tb_prog';
 
     protected $fillable= [
-           'Kd_Program',
-           'Program'
+           'kode_prog',
+           'program',
+           'ik_id'
     ];
+
+    /**
+     * Get the ik that owns the Program
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function ik()
+    {
+        return $this->belongsTo(Ik::class);
+    }
+
+    /**
+     * Get all of the kegiatan for the Program
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function kegiatan()
+    {
+        return $this->hasMany(Kegiatan::class, 'program_id');
+    }
 }

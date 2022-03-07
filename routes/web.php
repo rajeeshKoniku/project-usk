@@ -1,12 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IkuController;
+use App\Http\Controllers\IkController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SsController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KkController;
+use App\Http\Controllers\IkkController;
+use App\Http\Controllers\KegiatanRinciController;
+use App\Http\Controllers\KomponenController;
+use App\Models\Ik;
 use App\Models\Program;
+use App\Models\Ss;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +26,11 @@ use App\Models\Program;
 
 Route::get('/', 'App\Http\Controllers\homeController@home');
 
-//Iku Controller
-Route::get('/iku', [IkuController::class, 'index'])->name('iku.index');
-Route::get('/iku/data', [IkuController::class, 'fetch_data'])->name('iku.fetch_data');
-Route::post('/iku/tambah', [IkuController::class, 'store'])->name('iku.store');
-Route::post('/iku/aksi', [IkuController::class, 'action'])->name('iku.action');
+//Ik Controller
+Route::get('/ik', [IkController::class, 'index'])->name('ik.index');
+Route::get('/ik/data', [IkController::class, 'fetch_data'])->name('ik.fetch_data');
+Route::post('/ik/tambah', [IkController::class, 'store'])->name('ik.store');
+Route::post('/ik/aksi', [IkController::class, 'action'])->name('ik.action');
 
 //Ss Controller
 Route::get('/ss', [SsController::class, 'index'])->name('ss.index');
@@ -51,7 +56,31 @@ Route::get('/kk/data', [KkController::class, 'fetch_data'])->name('kk.fetch_data
 Route::post('/kk/tambah', [KkController::class, 'store'])->name('kk.store');
 Route::post('/kk/aksi', [KkController::class, 'action'])->name('kk.action');
 
-// Route::get('/tes', function () {
-//     $programs = Program::all();
-//     return view("tes", compact('programs'));
-// });
+//IKK Controller
+Route::get('/ikk', [IkkController::class, 'index'])->name('ikk.index');
+Route::get('/ikk/data', [IkkController::class, 'fetch_data'])->name('ikk.fetch_data');
+Route::post('/ikk/tambah', [IkkController::class, 'store'])->name('ikk.store');
+Route::post('/ikk/aksi', [IkkController::class, 'action'])->name('ikk.action');
+
+//Kegiatan Rinci Controller
+Route::get('/KegiatanRinci', [KegiatanRinciController::class, 'index'])->name('kegiatanRinci.index');
+Route::get('/KegiatanRinci/data', [KegiatanRinciController::class, 'fetch_data'])->name('kegiatanRinci.fetch_data');
+Route::post('/KegiatanRinci/tambah', [KegiatanRinciController::class, 'store'])->name('kegiatanRinci.store');
+Route::post('/KegiatanRinci/aksi', [KegiatanRinciController::class, 'action'])->name('kegiatanRinci.action');
+
+//Komponen Controller
+Route::get('/Komponen', [KomponenController::class, 'index'])->name('komponen.index');
+Route::get('/Komponen/data', [KomponenController::class, 'fetch_data'])->name('komponen.fetch_data');
+Route::post('/Komponen/tambah', [KomponenController::class, 'store'])->name('komponen.store');
+Route::post('/Komponen/aksi', [KomponenController::class, 'action'])->name('komponen.action');
+
+//Spesifikasi Controller
+Route::get('/Spesifikasi', [SpesifikasiController::class, 'index'])->name('spesifikasi.index');
+Route::get('/Spesifikasi/data', [SpesifikasiController::class, 'fetch_data'])->name('spesifikasi.fetch_data');
+Route::post('/Spesifikasi/tambah', [SpesifikasiController::class, 'store'])->name('spesifikasi.store');
+Route::post('/Spesifikasi/aksi', [SpesifikasiController::class, 'action'])->name('spesifikasi.action');
+
+Route::get('/tes', function () {
+    $ss = Ss::pluck('kode_ss', 'id');
+    return dd($ss);
+});

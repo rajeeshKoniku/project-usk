@@ -5,6 +5,7 @@
 <!-- Mirrored from codervent.com/dashtreme/demo/vertical/dashboard-eCommerce.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 08:55:34 GMT -->
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>@yield('judul')</title>
    @include('layouts.head')
 </head>
 

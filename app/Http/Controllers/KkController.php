@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kk;
-use App\Models\Iku;
+use App\Models\IK;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -17,20 +17,20 @@ class KkController extends Controller
      */
     public function index()
     {
-        $data =Iku::all('Kode_IK', 'Indikator_Kinerja');
+        $data =IK::all('kode_ik', 'indikator_kinerja');
         return view('kk.index', compact('data'));
     }
 
     public function fetch_data()
     {
         $joinData = DB::select('
-            SELECT tb_kk.id, tb_ik.Kode_IK, tb_ik.Indikator_Kinerja,
-            tb_kk.Pk_Menteri, tb_kk.tw_1, tb_kk.tw_2,
-            tb_kk.tw_3, tb_kk.tw_4, tb_kk.Bobot
+            SELECT tb_kk.id,tb_ik.kode_ik, tb_ik.indikator_kinerja,
+            tb_kk.pk_menteri, tb_kk.tw_1, tb_kk.tw_2,
+            tb_kk.tw_3, tb_kk.tw_4, tb_kk.bobot
             FROM tb_kk
             INNER JOIN tb_ik
             ON
-            tb_ik.Kode_IK = tb_kk.Kode_IK;');
+            tb_ik.id = tb_kk.id;');
 
         return DataTables::of($joinData)->toJson();
     }
@@ -63,13 +63,13 @@ class KkController extends Controller
     public function store(Request $req)
     {
         $data = [
-            "Kode_IK" => $req->Kode_IK,
-            "Pk_Menteri" => $req->Pk_Menteri,
+            "ik_id" => $req->kode_ik,
+            "pk_menteri" => $req->pk_menteri,
             "tw_1" => $req->tw_1,
             "tw_2" => $req->tw_2,
             "tw_3" => $req->tw_3,
             "tw_4" => $req->tw_4,
-            "Bobot" => $req->Bobot
+            "bobot" => $req->bobot
         ];
 
         Kk::create($data);

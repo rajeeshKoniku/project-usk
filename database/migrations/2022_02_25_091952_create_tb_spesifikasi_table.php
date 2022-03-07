@@ -15,16 +15,16 @@ class CreateTbSpesifikasiTable extends Migration
     {
         Schema::create('tb_spesifikasi', function (Blueprint $t) {
             $t->id();
-            $t->string('Akun');
-            $t->text('Kebutuhan_Kegiatan');
-            $t->text('Jenis_Kegiatan');
-            $t->text('Merk');
-            $t->text('Type');
-            $t->text('Catalog');
-            $t->text('Kuantitas');
-            $t->text('Durasi');
-            $t->text('Kegiatan');
-            $t->text('Harga_Satuan');
+            $t->string('akun');
+            $t->text('kebutuhan_kegiatan');
+            $t->text('jenis_kegiatan');
+            $t->text('merk');
+            $t->text('type');
+            $t->text('catalog');
+            $t->text('kuantitas');
+            $t->text('durasi');
+            $t->text('kegiatan');
+            $t->text('harga_Satuan');
             $t->timestamps();
         });
     }

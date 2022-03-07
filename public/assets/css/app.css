@@ -6,7 +6,7 @@ Email: codervent@gmail.com
 File: app.css
 */
 
-/*  
+/*
   - Google Font
   - General
   - Sidebar
@@ -20,7 +20,7 @@ File: app.css
   - Navs and Tabs
   - Background Colors
   - Authentication
-  - Buttons 
+  - Buttons
   - Pricing Table
   - Forms
   - Responsive
@@ -1314,7 +1314,7 @@ a {
 	height: 65px !important;
 	text-align: center;
   }
-  
+
   .w_chart canvas {
 	position: absolute;
 	top: 0;
@@ -3778,7 +3778,7 @@ input::placeholder {
 	background-position: center;
 	transition: background .3s;
   }
-  
+
   #theme14 {
 	background-image: linear-gradient(180deg, #08a50e, #69bb03);
 	background-size: 100% 100%;
@@ -4292,4 +4292,8 @@ body.bg-theme15 {
 
 	}
 
+}
+
+.hide_column {
+    display : none;
 }
