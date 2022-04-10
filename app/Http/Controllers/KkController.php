@@ -2,78 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KKmentri;
 use App\Models\Kk;
-use App\Models\IK;
-use Yajra\DataTables\Facades\DataTables;
+use App\Models\Ik;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class KkController extends Controller
 {
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+   public function index()
     {
-        $data =IK::all('kode_ik', 'indikator_kinerja');
-        return view('kk.index', compact('data'));
+        $dataIK = Ik::all('kode_ik');
+        $data = KKmentri::whereNotNull(['pk_menteri', 'bobot'])->get();
+        return view('kk.index', compact('data','dataIK'));
     }
-
-    public function fetch_data()
+    public function del(Request $x)
     {
-        $joinData = DB::select('
-            SELECT tb_kk.id,tb_ik.kode_ik, tb_ik.indikator_kinerja,
-            tb_kk.pk_menteri, tb_kk.tw_1, tb_kk.tw_2,
-            tb_kk.tw_3, tb_kk.tw_4, tb_kk.bobot
-            FROM tb_kk
-            INNER JOIN tb_ik
-            ON
-            tb_ik.id = tb_kk.id;');
-
-        return DataTables::of($joinData)->toJson();
+        Kk::where('id', $x->id)->delete();
+        return response()->json([$x->id]);
     }
-
-    public function action(Request $request)
+    public function add(Request $x)
     {
-        if ($request->ajax()) {
-            // ambil data tanpa action
-            $data = $request->except('action');
-
-            // update atau delete program
-            if ($request->action == 'edit') {
-                Kk::where('id', $request->id)->update($data);
-            }
-
-            if ($request->action == 'delete') {
-                Kk::where('id', $request->id)->delete();
-            }
-
-            return response()->json($request);
-        }
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $req)
-    {
-        $data = [
-            "ik_id" => $req->kode_ik,
-            "pk_menteri" => $req->pk_menteri,
-            "tw_1" => $req->tw_1,
-            "tw_2" => $req->tw_2,
-            "tw_3" => $req->tw_3,
-            "tw_4" => $req->tw_4,
-            "bobot" => $req->bobot
+        $req = [
+            "tw_1" => $x->tw_1,
+            "tw_2" => $x->tw_2,
+            "tw_3" => $x->tw_3,
+            "tw_4" => $x->tw_4
         ];
-
-        Kk::create($data);
-        return response()->json(['success'=> 'Berhasil menyimpan data']);
+        $data = Kk::find($x->id)->update($req);
+        return $data;
     }
 
 }

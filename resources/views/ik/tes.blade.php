@@ -1,3 +1,36 @@
+<html>
+    <head>
+        <title>Inline</title>
+        
+
+        </head>
+    <body>
+        <div class="m-5">
+
+        <table class="p-10 table-bordered table">
+            <tr>
+                <td>Kode IK</td>
+                <td>Indikator Kinerja</td>
+                <td>Kode SS</td>
+                <td>Action</td>
+            </tr>
+                @foreach($data as $x)
+            <tr>
+                <td style="display: none">{{ $loop->iteration }}</td>
+                <td contenteditable="true">{{ $x->kode_ik}}</td>
+                <td contenteditable="true">{{ $x->indikator_kinerja}}</td>
+                <td contenteditable="true">{{ $x->ss_id}}</td>
+
+                <td>
+                    <span class="badge btn btn-danger del_btn"><i class="fa-solid fa-trash pr-1"></i>Delete</span>
+                    <span class="badge btn btn-success save_btn"><i class="fa-solid fa-floppy-disk pr-1"></i>Save</span>
+                    <span class="badge btn btn-info new_btn"><i class="fa-solid fa-plus pr-1"></i>Add row</span>
+                </td>
+            </tr>
+                @endforeach
+        </table>
+
+        </div>
         <script>
             $(document).ready(function($){
                 //add
@@ -19,24 +52,21 @@
                 //save
                  $(document).on('click', ".save_btn",function(e){
                    let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
-                   let id = setiapBaris[0]
-                   let kode_ss = setiapBaris[1]
-                   let sasaran = setiapBaris[2]
+                   let kode_ik = setiapBaris[0]
+                   let ik = setiapBaris[1]
+                   let ss_id = setiapBaris[2]
 
                       $.ajax({
                            type:'POST',
-                           url:"{{ route('ss.add') }}",
+                           url:"{{ route('ik.add') }}",
                            data:{
                              "_token": "{{ csrf_token() }}",
-                             id:id,
-                            kode_ss:kode_ss,
-                            sasaran:sasaran
+                            kode_ik:kode_ik,
+                            indikator_kinerja:ik,
+                            ss_id:ss_id
                             },
                            success:function(data){
-                             Swal.fire(
-                                  'Tambah Data Sukses!'
-                                )
-                             location.reload()
+                             console.log(data)
                            }
                         });
                 })
@@ -44,35 +74,22 @@
                 //del
                 $(document).on('click', ".del_btn",function(e){
                     let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
-                       Swal.fire({
-                              title: 'Data ini akan dihapus, apa anda yakin ?',
-                              icon: 'warning',
-                              showCancelButton: true,
-                              confirmButtonColor: '#3085d6',
-                              cancelButtonColor: '#d33',
-                              confirmButtonText: 'Ya, Hapus data ini!'
-                            }).then((result) => {
-                              if (result.isConfirmed) {
-                                 $.ajax({
+                    $.ajax({
                            type:'POST',
-                           url:"{{ route('ss.del') }}",
+                           url:"{{ route('ik.del') }}",
                            data:{
                              "_token": "{{ csrf_token() }}",
                             id:setiapBaris[0],
+
                             },
                            success:function(data){
-                                Swal.fire(
-                                  'Terhapus!',
-                                  'Data sudah terhapus.',
-                                  'success'
-                                )
-                                location.reload()
-                              }
-                            })
+                              alert(data.success);
+                            location.reload()
                            }
                         });
-
-
                 })
             })
         </script>
+    </body>
+</html>
+

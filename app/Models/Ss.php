@@ -12,6 +12,7 @@ class Ss extends Model
     protected $table = 'tb_ss';
 
     protected $fillable= [
+           'id',
            'kode_ss',
            'sasaran',
     ];

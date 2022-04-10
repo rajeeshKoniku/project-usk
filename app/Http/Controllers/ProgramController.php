@@ -10,63 +10,25 @@ use Yajra\DataTables\Facades\DataTables;
 
 class programController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $ikData =Ik::all();
-        return view('program.index', compact('ikData'));    
+        $data = program::get();
+        return view('Program.index',compact('data'));
     }
-
-    public function fetch_data()
+    public function del(Request $x)
     {
-        return DataTables::of(Program::with('ik'))->toJson();
+        program::where('id', $x->id)->delete();
+        return response()->json([$x->id]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function add(Request $x)
     {
-        $data = [
-            "kode_prog" => $request->kode_prog,
-            "program" => $request->program,
-            "ik_id" => $request->ik_id,
+        $lastData = program::latest()->first();
+        $req = [
+            "id"=> rand(1000,9999),
+            "kode_prog" => $x->kode_prog,
+            "program" => $x->program,
         ];
-
-        $program = Program::create($data);
-        return response()->json($program);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\program  $program
-     * @return \Illuminate\Http\Response
-     */
-    public function action(Request $request)
-    {
-        if ($request->ajax()) {
-            // ambil data tanpa action
-            $data = $request->except('action');
-
-            // update atau delete program
-            if ($request->action == 'edit') {
-                Program::where('id', $request->id)->update($data);
-            }
-
-            if ($request->action == 'delete') {
-                Program::where('id', $request->id)->delete();
-            }
-
-            return response()->json($request);
-        }
+        program::UpdateOrCreate(["id" => $x->id],$req);
+        return response()->json(["SUKSES"]);
     }
 }

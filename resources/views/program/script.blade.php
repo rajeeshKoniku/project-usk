@@ -1,123 +1,78 @@
-<script type="text/javascript">
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        <script>
+            $(document).ready(function($){
+                //add
+                $(document).on('click', ".new_btn",function(e){
+                    let row = $(this).closest('tr').clone();
+                    $.each(row.find('td'), function(i1, v1){
+                        $(this).html('')
+                        if ($(this).is(':last-child')) {
+                            $(this).html("<span class='badge btn btn-danger del_btn'>Delete</span>  <span class='badge btn btn-success save_btn'>Save</span> <span class='badge btn btn-info new_btn'>Add row</span")
+                        }
+                    })
 
-        // fetch/ambil data datatable
-        $('#tabelProgram').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "order": [],
-            "ajax": "{{ route('program.fetch_data') }}",
-            columns: [{
-                    data: "id",
-                    name: "id",
-                    className: "hide_column"
+                    $(this).closest('tr').after(row);
+                    // console.log(row[0].innerText);
+                    // console.log($(this).closest('tr').after(row)[0].innerText.split("\t").slice(0, -1));
+                    // console.log(row);
+                })
 
-                }, {
-                    data: "ik_id",
-                    name: "ik_id"
-                },
-                {
-                    data: "kode_prog",
-                    name: "kode_prog",
-                },
-                {
-                    data: "program",
-                    name: "program"
-                },
-            ],
-            dom: 'Bflrtip',
-            buttons: [{
-                text: 'Tambah',
-                action: function(e, dt, node, config) {
-                    $('#tambahModal').modal('show')
-                }
-            }, 'copy', 'excel', 'pdf']
-        });
+                //save
+                 $(document).on('click', ".save_btn",function(e){
+                   let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
+                   let id = setiapBaris[0]
+                   let kode_prog = setiapBaris[1]
+                   let program = setiapBaris[2]
+
+                      $.ajax({
+                           type:'POST',
+                           url:"{{ route('program.add') }}",
+                           data:{
+                             "_token": "{{ csrf_token() }}",
+                             id:id,
+                            kode_prog:kode_prog,
+                            program:program
+                            },
+                           success:function(data){
+                             Swal.fire(
+                                  'Tambah Data Sukses!'
+                                )
+                             location.reload()
+                           }
+                        });
+                })
+
+                //del
+                $(document).on('click', ".del_btn",function(e){
+                    let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
+                       Swal.fire({
+                              title: 'Data ini akan dihapus, apa anda yakin ?',
+                              icon: 'warning',
+                              showCancelButton: true,
+                              confirmButtonColor: '#3085d6',
+                              cancelButtonColor: '#d33',
+                              confirmButtonText: 'Ya, Hapus data ini!'
+                            }).then((result) => {
+                              if (result.isConfirmed) {
+                                 $.ajax({
+                           type:'POST',
+                           url:"{{ route('program.del') }}",
+                           data:{
+                             "_token": "{{ csrf_token() }}",
+                            id:setiapBaris[0],
+                            },
+                           success:function(data){
+                                Swal.fire(
+                                  'Terhapus!',
+                                  'Data sudah terhapus.',
+                                  'success'
+                                )
+                                location.reload()
+                              }
+                            })
+                           }
+                        });
 
 
-        // saat draw tabel, jalankan tabledit
-        $('#tabelProgram').on('draw.dt', function() {
-            $('#tabelProgram').Tabledit({
-                url: "{{ route('program.action') }}",
-                dataType: "json",
-                // eventType: 'dblclick', =====> pakai ini jika ingin doubleclick / tanpa edit button
-                // editButton: false,
-                columns: {
-                    identifier: [0, 'id'],
-                    editable: [
-                        [2, 'kode_prog'],
-                        [3, 'program', 'textarea',
-                            '{"rows": "5", "maxlength": "255", "wrap": "hard"}'
-                        ]
-                    ]
-                },
-                restoreButton: false,
-                buttons: {
-                    edit: {
-                        class: 'btn btn-sm btn-success m-1',
-                        html: '<span class="lni lni-pencil"></span>',
-                        action: 'edit'
-                    },
-                    delete: {
-                        class: 'btn btn-sm btn-danger m-1',
-                        html: '<span class="lni lni-trash"></span>',
-                        action: 'delete'
-                    },
-                    save: {
-                        class: 'btn btn-sm btn-success',
-                        html: 'Save'
-                    },
-                    restore: {
-                        class: 'btn btn-sm btn-warning',
-                        html: 'Restore',
-                        action: 'restore'
-                    },
-                    confirm: {
-                        class: 'btn btn-sm btn-danger',
-                        html: 'Confirm'
-                    }
-                },
-                onSuccess: function(data, textStatus, jqXHR) {
-                    // console.log(data, textStatus, jqXHR);
-                    // jika aksi hapus maka hapus data dari baris dan reload tabelProgram
-                    if (data.action == 'delete') {
-                        $('#' + data.id).remove()
-                        $('#tabelProgram').DataTable().ajax.reload();
-                    }
-                },
-            });
-        });
-
-        //////////////// tambah program ////////////////////////
-        $('#save').click(function() {
-            let kode_prog = $('#kode_prog').val();
-            let program = $('#program').val();
-            let ik_id = $('#ik_id').val()
-
-            $.ajax({
-                url: "{{ route('program.store') }}",
-                type: 'POST',
-                data: {
-                    kode_prog,
-                    program,
-                    ik_id
-                },
-                success: function(data) {
-                    // console.log(data);
-                    $('#program').val('');
-                    $('#kode_prog').val('');
-                    $('#ik_id').val('');
-
-                    // setelah berhasil, reload tabelProgram
-                    $('#tabelProgram').DataTable().ajax.reload();
-                    $('#tambahModal').modal('hide');
-                }
-            });
-        })
-    });
-</script>
+                })
+            })
+        </script>

@@ -1,8 +1,5 @@
 <!doctype html>
 <html lang="en">
-
-
-<!-- Mirrored from codervent.com/dashtreme/demo/vertical/dashboard-eCommerce.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 08:55:34 GMT -->
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('judul')</title>
@@ -19,7 +16,7 @@
                     <img src="{{asset('assets/')}}/images/logo-icon.png" class="logo-icon" alt="logo icon">
                 </div>
                 <div>
-                    <h4 class="logo-text">PROJEK USK</h4>
+                    <h4 class="logo-text">RKT</h4>
                 </div>
                 <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
                 </div>

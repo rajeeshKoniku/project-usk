@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ss;
-use App\Models\Iku;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -15,50 +14,25 @@ class SsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+     public function index()
     {
-        return view('Ss.index');
+        $data = Ss::get();
+        return view('Ss.index',compact('data'));
     }
-
-    public function fetch_data()
+    public function del(Request $x)
     {
-        $data = Ss::all();
-        return DataTables::of($data)->toJson();
+        Ss::where('id', $x->id)->delete();
+        return response()->json([$x->id]);
     }
-
-    public function action(Request $request)
+    public function add(Request $x)
     {
-        if ($request->ajax()) {
-            // ambil data tanpa action
-            $data = $request->except('action');
-
-            // update atau delete program
-            if ($request->action == 'edit') {
-                Ss::where('id', $request->id)->update($data);
-            }
-
-            if ($request->action == 'delete') {
-                Ss::where('id', $request->id)->delete();
-            }
-
-            return response()->json($request);
-        }
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $req)
-    {
-        $data = [
-            "kode_ss" => $req->kode_ss,
-            "sasaran" => $req->sasaran,
+        $lastData = Ss::latest()->first();
+        $req = [
+            "id"=> rand(1000,9999),
+            "kode_ss" => $x->kode_ss,
+            "sasaran" => $x->sasaran,
         ];
-
-        Ss::create($data);
-        return response()->json(['success' => 'Berhasil menyimpan data']);
+        Ss::UpdateOrCreate(["id" => $x->id],$req);
+        return response()->json(["SUKSES"]);
     }
 }

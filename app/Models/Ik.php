@@ -11,6 +11,7 @@ class Ik extends Model
     use HasFactory;
      protected $table = 'tb_ik';
      protected $fillable= [
+            "id",
             "kode_ik",
             "indikator_kinerja",
             "ss_id"

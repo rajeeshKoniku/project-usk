@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ikk extends Model
+class KKmentri extends Model
 {
     use HasFactory;
-    protected $table = 'tb_ikk';
+    protected $table = 'tb_kk';
+
     protected $fillable= [
-            "kode_ik",
-            "kode_prog"
-     ];
+           'kode_ik',
+           'pk_menteri',
+           'bobot',
+    ];
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbProgTable extends Migration
+class CreateRincianKomponensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateTbProgTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_prog', function (Blueprint $t) {
+        Schema::create('tb_rincian_komponen', function (Blueprint $t) {
             $t->id();
-            $t->string('kode_ik');
-            $t->string('kode_prog');
-            $t->text('program');
+            $t->string('Keg');
+            $t->integer('KRO');
+            $t->string('RO');
+            $t->integer('KP');
+            $t->string('SK');
+            $t->string('Sub_Komponen');
             $t->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateTbProgTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_prog');
+        Schema::dropIfExists('rincian_komponens');
     }
 }

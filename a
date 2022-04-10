@@ -1,0 +1,148 @@
+[33mcommit 0bb2bd4cce4f53496e88e03ad81a70f681aa24c4[m[33m ([m[1;36mHEAD -> [m[1;32mdevelopment[m[33m, [m[1;31morigin/development[m[33m, [m[1;32mbaru[m[33m)[m
+Merge: cd9ad9a 24a22ac
+Author: upinipin <budakdurianruntuh@gmail.com>
+Date:   Mon Mar 7 15:12:22 2022 +0700
+
+    Crud Data besar
+
+[33mcommit cd9ad9a73f39402ca9609134cdf240eefa709e2d[m
+Author: upinipin <budakdurianruntuh@gmail.com>
+Date:   Sat Mar 5 09:08:44 2022 +0700
+
+    pull refactor code
+
+[33mcommit 24a22ac95982ce8db3d0fb09940bf55d8e88386a[m
+Author: Fitrah Maulana <fitrahmaulana111@gmail.com>
+Date:   Fri Mar 4 22:11:02 2022 +0700
+
+    refactor nama, migration dan menambahkan factory
+
+[33mcommit e8d3f82a37cd838ce17c95dfad03dce71399f341[m
+Merge: 173a48b e02e76d
+Author: Fitrah Maulana <fitrahmaulana111@gmail.com>
+Date:   Fri Mar 4 16:47:28 2022 +0700
+
+    Merge branch 'development' of https://github.com/rajeeshKoniku/project-usk into development
+
+[33mcommit 173a48b33128758c9b52f156be882fe335da3e68[m
+Author: Fitrah Maulana <fitrahmaulana111@gmail.com>
+Date:   Fri Mar 4 16:43:05 2022 +0700
+
+    menambah tabel kegiatan
+
+[33mcommit 0a435868d3e68b7e390629c3f846fea0ac95253c[m
+Author: upinipin <budakdurianruntuh@gmail.com>
+Date:   Wed Mar 2 17:17:34 2022 +0700
+
+    Add Procfile and make use of Nginx to heroku
+
+[33mcommit e02e76de894a34f30373f651a986716400449980[m
+Author: upinipin <budakdurianruntuh@gmail.com>
+Date:   Wed Mar 2 17:15:39 2022 +0700
+
+    Add Procfile and make use of Apache2
+
+[33mcommit 9bc64521d534ba7f3c7d091ca4f9f092a3287ba0[m
+Author: upinipin <budakdurianruntuh@gmail.com>
+Date:   Wed Mar 2 17:03:43 2022 +0700
+
+    Upload web ke heroku (1)
+
+[33mcommit 419e109b6da51ba1fd946ea5c1176b6407e44ea9[m
+Author: upinipin <budakdurianruntuh@gmail.com>
+Date:   Wed Mar 2 16:53:38 2022 +0700
+
+    Upload web ke heroku
+
+[33mcommit 479c1163a0bed722968290dd4a08c5f5cbbfbad8[m
+Merge: c96ec5f 1acd7c0
+Author: Fitrah Maulana <fitrahmaulana111@gmail.com>
+Date:   Mon Feb 28 21:02:04 2022 +0700
+
+    Merge branch 'development' of https://github.com/rajeeshKoniku/project-usk into development
+
+[33mcommit c96ec5fd3e88758a4c4a90dc98c16b6dedae5c89[m
+Author: Fitrah Maulana <fitrahmaulana111@gmail.com>
+Date:   Mon Feb 28 20:56:31 2022 +0700
+
+    menambahkan text area ke editable
+
+[33mcommit 1acd7c0273164dac854e2ad811b4b14704c790cf[m
+Author: upinipin <budakdurianruntuh@gmail.com>
+Date:   Mon Feb 28 19:33:10 2022 +0700
+
+    Menambah crud tabel kk dan tabel master kegiatan
+
+[33mcommit 169843736f3fca962f6546adc1a080b763cbd51f[m
+Author: upinipin <budakdurianruntuh@gmail.com>
+Date:   Mon Feb 28 16:42:59 2022 +0700
+
+    Mengupload crud iku
+
+[33mcommit 067699f90ec52629423c8b90381ff07a32521904[m
+Author: Fitrah Maulana <fitrahmaulana111@gmail.com>
+Date:   Sun Feb 27 20:28:30 2022 +0700
+
+    membuat inline crud tabel program
+
+[33mcommit 8ffeb4bc929aaabc547a487d1459c9015703f00d[m
+Author: Fitrah Maulana <fitrahmaulana111@gmail.com>
+Date:   Fri Feb 25 21:56:36 2022 +0700
+
+    perubahan nama
+
+[33mcommit fc5084ed2581c232ddb5c8eafcf0c5942ceebea9[m
+Author: Fitrah Maulana <fitrahmaulana111@gmail.com>
+Date:   Fri Feb 25 21:52:24 2022 +0700
+
+    perbaikan nama agar lebih mudah dimengerti
+
+[33mcommit be6f3cc1bfc1b400ea4fcb1ba5ec5fa768f3c37a[m
+Merge: f838f6a 26fa884
+Author: Fitrah Maulana <fitrahmaulana111@gmail.com>
+Date:   Fri Feb 25 21:20:06 2022 +0700
+
+    Merge branch 'development' of https://github.com/rajeeshKoniku/project-usk into development
+
+[33mcommit f838f6a8d153978df16bfdfd9caed6ee9c69a49a[m
+Author: Fitrah Maulana <fitrahmaulana111@gmail.com>
+Date:   Fri Feb 25 21:19:55 2022 +0700
+
+    perubahan kecil
+
+[33mcommit 26fa8842e00d340c9a966a4b897de6659edfa393[m
+Merge: 61de1aa 102a366
+Author: upinipin <budakdurianruntuh@gmail.com>
+Date:   Fri Feb 25 21:11:30 2022 +0700
+
+    menambah ajax insert di iku
+
+[33mcommit 61de1aac586a0c3ef7b5a7d824856ae0eb9d4490[m
+Author: upinipin <budakdurianruntuh@gmail.com>
+Date:   Fri Feb 25 19:28:09 2022 +0700
+
+    mengganti branch
+
+[33mcommit 102a3667a92349649d23811f9287eacd3d3a1730[m
+Author: Fitrah Maulana <fitrahmaulana111@gmail.com>
+Date:   Fri Feb 25 19:18:55 2022 +0700
+
+    "mengubah struktur layout"
+
+[33mcommit 8362583253442b75b18efc20d472fa60bf5e5e1f[m[33m ([m[1;31mheroku/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: upinipin <budakdurianruntuh@gmail.com>
+Date:   Fri Feb 25 17:53:24 2022 +0700
+
+    Menambah template
+
+[33mcommit 1b08f8561a60741e4d91c9fe7894fd9311b9102c[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: upinipin <budakdurianruntuh@gmail.com>
+Date:   Fri Feb 25 16:29:39 2022 +0700
+
+    Membuat tabel
+
+[33mcommit 78d5b0652fd5ed1c6dedb55dacaf98d0d9c83188[m
+Author: upinipin <budakdurianruntuh@gmail.com>
+Date:   Fri Feb 25 12:14:34 2022 +0700
+
+    initial commit

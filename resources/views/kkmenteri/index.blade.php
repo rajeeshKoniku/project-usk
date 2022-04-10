@@ -1,6 +1,6 @@
 <!-- Menghubungkan dengan view template master -->
 @extends('layouts.layout')
-@section('judul', 'Halaman KK')
+@section('judul', 'Halaman KK Mentri')
 @section('content')
 
     <div class="container">
@@ -13,10 +13,6 @@
                                 <th>ID</th>
                                 <th>Kode IK</th>
                                 <th>PK Mentri</th>
-                                <th>TW 1</th>
-                                <th>TW 2</th>
-                                <th>TW 3</th>
-                                <th>TW 4</th>
                                 <th>Bobot</th>
                                 <th>Aksi</th>
                             </tr>
@@ -26,14 +22,18 @@
                         <tr>
                             <td >{{ $x->id }}</td>
                             <td>
-                               {{ $x->kode_ik}}
+                                <select name="kode_ik" type="text" id="kode_ik" class="d-inline form-control w-auto required">
+                                @foreach($dataIK as $ora)
+                                    @if($ora->kode_ik === $x->kode_ik)
+                                        <option value="{{$ora->kode_ik}}" selected="true">{{$ora->kode_ik}}</option>
+                                    @else
+                                        <option value="{{$ora->kode_ik}}" >{{$ora->kode_ik}}</option>
+                                    @endif
+                                @endforeach
+                                </select>
                             </td>
-                            <td contenteditable="false">{{ $x->pk_menteri}}</td>
-                            <td contenteditable="true">{{ $x->tw_1}}</td>
-                            <td contenteditable="true">{{ $x->tw_2}}</td>
-                            <td contenteditable="true">{{ $x->tw_3}}</td>
-                            <td contenteditable="true">{{ $x->tw_4}}</td>
-                            <td contenteditable="false">{{ $x->bobot}}</td>
+                            <td contenteditable="true">{{ $x->pk_menteri}}</td>
+                            <td contenteditable="true">{{ $x->bobot}}</td>
 
                             <td>
                                 <span class="del_btn"><i role="button" class="rounded bg-danger p-3 fa-solid fa-trash fa-sm"></i></span>
@@ -51,5 +51,5 @@
 @endsection
 
  @push('scripts')
-    @include('kk.script')
+    @include('kkmenteri.script')
 @endpush

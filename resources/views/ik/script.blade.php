@@ -1,122 +1,80 @@
-<script type="text/javascript">
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        <script>
+            $(document).ready(function($){
+                //add
+                $(document).on('click', ".new_btn",function(e){
+                    let row = $(this).closest('tr').clone();
+                    $.each(row.find('td'), function(i1, v1){
+                        $(this).html('')
+                        if ($(this).is(':last-child')) {
+                            $(this).html("<span class='badge btn btn-danger del_btn'>Delete</span>  <span class='badge btn btn-success save_btn'>Save</span> <span class='badge btn btn-info new_btn'>Add row</span")
+                        }
+                    })
 
-        // fetch/ambil data datatable
-        $('#tabelIku').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "order": [],
-            "ajax": "{{ route('ik.fetch_data') }}",
-            columns: [{
-                    data: "id",
-                    name: "id",
-                    className: "hide_column"
-                },{
-                    data: "ss.kode_ss",
-                    name: "ss.kode_ss"
-                },
-                {
-                    data: "kode_ik",
-                    name: "kode_ik",
-                },
-                {
-                    data: "indikator_kinerja",
-                    name: "indikator_kinerja"
-                },
-            ],
-            dom: 'Bflrtip',
-            buttons: [{
-                text: 'Tambah',
-                action: function(e, dt, node, config) {
-                    $('#tambahModal').modal('show')
-                }
-            }, 'copy', 'excel', 'pdf']
-        });
+                    $(this).closest('tr').after(row);
+                    // console.log(row[0].innerText);
+                    // console.log($(this).closest('tr').after(row)[0].innerText.split("\t").slice(0, -1));
+                    // console.log(row);
+                })
 
-        // saat draw tabel, jalankan tabledit
-        $('#tabelIku').on('draw.dt', function() {
-            $('#tabelIku').Tabledit({
-                url: "{{ route('ik.action') }}",
-                dataType: "json",
-                // eventType: 'dblclick', =====> pakai ini jika ingin doubleclick / tanpa edit button
-                // editButton: false,
-                columns: {
-                    identifier: [0, 'id'],
-                    editable: [
-                        [2, 'kode_ik'],
-                        [3, 'indikator_kinerja', 'textarea',
-                            '{"rows": "5", "maxlength": "255", "wrap": "hard"}'
-                        ]
-                    ]
-                },
-                restoreButton: false,
-                buttons: {
-                    edit: {
-                        class: 'btn btn-sm btn-success m-1',
-                        html: '<span class="lni lni-pencil"></span>',
-                        action: 'edit'
-                    },
-                    delete: {
-                        class: 'btn btn-sm btn-danger m-1',
-                        html: '<span class="lni lni-trash"></span>',
-                        action: 'delete'
-                    },
-                    save: {
-                        class: 'btn btn-sm btn-success',
-                        html: 'Save'
-                    },
-                    restore: {
-                        class: 'btn btn-sm btn-warning',
-                        html: 'Restore',
-                        action: 'restore'
-                    },
-                    confirm: {
-                        class: 'btn btn-sm btn-danger',
-                        html: 'Confirm'
-                    }
-                },
-                onSuccess: function(data, textStatus, jqXHR) {
-                    // console.log(data, textStatus, jqXHR);
-                    // jika aksi hapus maka hapus data dari baris dan reload tabelIku
-                    if (data.action == 'delete') {
-                        $('#' + data.id).remove()
-                        // $('#tabelIku').DataTable().ajax.reload();
-                        $('#tableIku').Datatable().reload(null, false);
-                    }
-                },
-            });
-        });
+                //save
+                 $(document).on('click', ".save_btn",function(e){
+                   let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
+                   let id = setiapBaris[0]
+                   let kode_ik = setiapBaris[1]
+                   let ik = setiapBaris[2]
+                   let ss_id = setiapBaris[3]
 
-        //////////////// tambah program ////////////////////////
-        $('#save').click(function() {
-            let kode_ik = $('#kode_ik').val();
-            let indikator_kinerja = $('#indikator_kinerja').val();
-            let ss_id = $('#ss_id').val();
+                      $.ajax({
+                           type:'POST',
+                           url:"{{ route('ik.add') }}",
+                           data:{
+                             "_token": "{{ csrf_token() }}",
+                             id:id,
+                            kode_ik:kode_ik,
+                            indikator_kinerja:ik,
+                            ss_id:ss_id
+                            },
+                           success:function(data){
+                             Swal.fire(
+                                  'Tambah Data Sukses!'
+                                )
+                             location.reload()
+                           }
+                        });
+                })
 
-            $.ajax({
-                url: "{{ route('ik.store') }}",
-                type: 'POST',
-                data: {
-                    kode_ik,
-                    indikator_kinerja,
-                    ss_id
-                },
-                success: function(data) {
-                    // console.log(data);
-                    $('#kode_ik').val('');
-                    $('#indikator_kinerja').val('');
-                    $('#ss_id').val('');
+                //del
+                $(document).on('click', ".del_btn",function(e){
+                    let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
+                       Swal.fire({
+                              title: 'Data ini akan dihapus, apa anda yakin ?',
+                              icon: 'warning',
+                              showCancelButton: true,
+                              confirmButtonColor: '#3085d6',
+                              cancelButtonColor: '#d33',
+                              confirmButtonText: 'Ya, Hapus data ini!'
+                            }).then((result) => {
+                              if (result.isConfirmed) {
+                                 $.ajax({
+                           type:'POST',
+                           url:"{{ route('ik.del') }}",
+                           data:{
+                             "_token": "{{ csrf_token() }}",
+                            id:setiapBaris[0],
+                            },
+                           success:function(data){
+                                Swal.fire(
+                                  'Terhapus!',
+                                  'Data sudah terhapus.',
+                                  'success'
+                                )
+                                location.reload()
+                              }
+                            })
+                           }
+                        });
 
-                    // setelah berhasil, reload tabelIku
-                    $('#tabelIku').DataTable().ajax.reload();
-                    $('#tambahModal').modal('hide');
-                }
-            });
-        })
-    });
-</script>
+
+                })
+            })
+        </script>

@@ -11,9 +11,10 @@ class Program extends Model
     protected $table = 'tb_prog';
 
     protected $fillable= [
+           'id',
+           'kode_ik',
            'kode_prog',
-           'program',
-           'ik_id'
+           'program'
     ];
 
     /**

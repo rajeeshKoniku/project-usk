@@ -1,4 +1,4 @@
-<div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 {{-- form --}}
-                <form>
+      {{--           <form>
                     <x-select name="ss_id" value="SS ID">
                         @foreach ($ssData as $item)
                             <option class="text-light" value="{{ $item->id }}">{{ $item->kode_ss }}</option>
@@ -23,4 +23,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+ --}}
