@@ -3,7 +3,7 @@
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-category"></i>
             </div>
-            <div class="menu-title">Mastering Data</div>
+            <div class="menu-title">Data Center</div>
         </a>
         <ul>
             <li> <a href="{{ route('ss.index') }}"><i class="bx bx-right-arrow-alt"></i>Sasaran</a></li>
@@ -20,14 +20,14 @@
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-category"></i>
             </div>
-            <div class="menu-title">Creating Data</div>
+            <div class="menu-title">Create Data</div>
         </a>
         <ul>
              
         <a href="{{ route('kk.index') }}">
             <div class="parent-icon"><i class='bx bx-grid'></i>
             </div>
-            <div class="menu-title">Kontrak Kinerja</div>
+            <div class="menu-title">Perjanjian Kinerja</div>
         </a>
         <a href="{{ route('rpk.index') }}">
             <div class="parent-icon"><i class='bx bx-grid'></i>
@@ -55,7 +55,31 @@
             <div class="menu-title">Laporan</div>
         </a>
         <ul>
-
+        <a href="{{ route('kk.index') }}">
+            <div class="parent-icon"><i class='bx bx-grid'></i>
+            </div>
+            <div class="menu-title">Realita</div>
+        </a>
+        <a href="{{ route('kk.index') }}">
+            <div class="parent-icon"><i class='bx bx-grid'></i>
+            </div>
+            <div class="menu-title">PERKIN</div>
+        </a>
+        <a href="{{ route('kk.index') }}">
+            <div class="parent-icon"><i class='bx bx-grid'></i>
+            </div>
+            <div class="menu-title">REKAT</div>
+        </a>
+        <a href="{{ route('kk.index') }}">
+            <div class="parent-icon"><i class='bx bx-grid'></i>
+            </div>
+            <div class="menu-title">RAB</div>
+        </a>
+        <a href="{{ route('kk.index') }}">
+            <div class="parent-icon"><i class='bx bx-grid'></i>
+            </div>
+            <div class="menu-title">RANGKA</div>
+        </a>
         </ul>
     </li>
 
