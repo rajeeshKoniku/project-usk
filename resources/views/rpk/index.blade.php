@@ -11,46 +11,73 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                 <th>Kode IK</th>,
-                                 <th>Indikator Kinerja</th>,
-                                <th>Kode Program</th>,
-                                <th>Program</th>,
-                                <th>Rincian Program</th>,
-                                <th>Nama Kegiatan</th>,
-                                <th>TOR/KAK/ProposalProject</th>,
-                                <th>Kebutuhan Kegiatan</th>,
-                                <th>Rencana Jadwal Pelaksanaan</th>,
+                                 <th>Kode IK</th>
+                                 <th>Indikator Kinerja</th>
+                                <th>Kode Program</th>
+                                <th>Program</th>
+                                <th>Rincian Program</th>
+                                <th>Nama Kegiatan</th>
+                                <th>TOR/KAK/ProposalProject</th>
+                                <th>Kebutuhan Kegiatan</th>
+                                <th>Rencana Jadwal Pelaksanaan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                         @foreach($data as $x)
+                         @foreach($RPK as $dataRPK)
                         <tr>
-                            <td >{{ $x->id }}</td>
+                            <td >{{ $dataRPK->id }}</td>
                             <td>
-                                <a class="d-inline pr-2">{{ $x->kode_ik }} </a>
                                 <select name="kode_ik" type="text" id="kode_ik" class="kode_ik d-inline form-control w-auto required">
-                                <?php foreach($dataLooping as $ora): ?>
-                                  <option
-                                  value="<?php echo $ora->kode_ik?>"><?php echo $ora->kode_ik; ?></option>
-                                <?php endforeach; ?>
+                                <option value="SILAHKAN PILIH" >SILAHKAN PILIH</option>
+                                @foreach($KK as $dataKK)
+                                    @if($dataKK->kode_ik === $dataRPK->kode_ik)
+                                        <option value="{{$dataKK->kode_ik}}" selected="true">{{$dataKK->kode_ik}}</option>
+                                    @else
+                                        <option value="{{$dataKK->kode_ik}}" >{{$dataKK->kode_ik}}</option>
+                                    @endif
+                                @endforeach
                                 </select>
                             </td>
-                            <td></td>
+                            <td class="indikator_kinerja"></td>
                             <td>
-                                <select name="kode_ik" class="kode_prog form-control d-inline w-auto required" id=""></select>
+                                <select name="kode_prog" class="kode_prog form-control d-inline w-auto required" id=""></select>
                             </td>
-                            <td></td>
-                            <td contenteditable="true">{{ $x->rincian_program}}</td>
-                            <td contenteditable="true">{{ $x->nama_kegiatan}}</td>
-                            <td contenteditable="true">{{ $x->Proposal_Project}}</td>
-                            <td contenteditable="true">{{ $x->Kebutuhan_Kegiatan}}</td>
-                            <td contenteditable="true">{{ $x->Rencana_Jadwal_Pelaksanaa}}</td>
+                            <td class="program"></td>
+                            <td>
+                                <select name="MAK" type="text" id="MAK" class="MAK d-inline form-control w-auto required">
+                                <option value="SILAHKAN PILIH" >SILAHKAN PILIH</option>
+                                @foreach($RINCIANPROGRAM as $dataMAK)
+                                    @if($dataMAK->MAK === $dataRPK->rincian_program)
+                                        <option value="{{$dataMAK->MAK}}" selected="true">{{$dataMAK->MAK}}</option>
+                                    @else
+                                        <option value="{{$dataMAK->MAK}}" >{{$dataMAK->MAK}}</option>
+                                    @endif
+                                @endforeach
+                            </td>
+                            <td contenteditable="true">{{ $dataRPK->nama_kegiatan}}</td>
+                            <td>
+
+                                <div id="uploadStatus"></div>
+                               <form id="uploadForm" enctype="multipart/form-data">
+                                  <input type="file" name="file" id="fileInput">
+                                </form>
+                            </td>
+                            <td contenteditable="true">{{ $dataRPK->Kebutuhan_Kegiatan}}</td>
+                            <td>
+                                <select name="Rencana_Jadwal_Pelaksanaan" class="Rencana_Jadwal_Pelaksanaan d-inline form-control w-auto required">
+                                    <option value="TRIWULAN 1">TRIWULAN 1</option>
+                                    <option value="TRIWULAN 2">TRIWULAN 2</option>
+                                    <option value="TRIWULAN 3">TRIWULAN 3</option>
+                                    <option value="TRIWULAN 4">TRIWULAN 4</option>
+                                </select>
+                            </td>
 
                             <td>
-                                <span class="del_btn"><i role="button" class="rounded bg-danger p-3 fa-solid fa-trash fa-sm"></i></span>
-                                <span class="save_btn"><i role="button" class="rounded bg-info p-3 fa-solid fa-floppy-disk fa-sm"></i></span>
-                                </td>
+                                 <span class="del_btn"><i role="button" class="rounded bg-danger py-3 px-2 fa-solid fa-trash fa-sm"></i></span>
+                                <span class="save_btn"><i role="button" class="rounded bg-info py-3 px-2 fa-solid fa-floppy-disk fa-sm"></i></span>
+                                <span class="new_btn"><i role="button" class="rounded bg-success py-3 px-2 fa-solid fa-plus fa-sm"></i></span>
+                            </td>
                         </tr>
                         @endforeach
                         </tbody>

@@ -12,8 +12,9 @@ class programController extends Controller
 {
     public function index()
     {
-        $data = program::get();
-        return view('Program.index',compact('data'));
+        $Program = program::get();
+        $IK = IK::get();
+        return view('Program.index',compact('Program','IK'));
     }
     public function del(Request $x)
     {
@@ -22,9 +23,9 @@ class programController extends Controller
     }
     public function add(Request $x)
     {
-        $lastData = program::latest()->first();
         $req = [
             "id"=> rand(1000,9999),
+            "kode_ik" => $x->kode_ik,
             "kode_prog" => $x->kode_prog,
             "program" => $x->program,
         ];

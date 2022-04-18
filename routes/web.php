@@ -61,6 +61,8 @@ Route::get('/rpk', [RpkController::class, 'index'])->name('rpk.index');
 Route::post('/rpk/del', [RpkController::class, 'del'])->name('rpk.del');
 Route::get('/rpk/get', [RpkController::class, 'get'])->name('rpk.get');
 Route::post('/rpk/add', [RpkController::class, 'add'])->name('rpk.add');
+Route::get('/rpk/getSingleProg', [RpkController::class, 'getSingleProg'])->name('rpk.getSingleProg');
+Route::post('/rpk/insertImg', [RpkController::class, 'insertImg'])->name('rpk.insertImg');
 
 Route::get('/tes', function () {
     $ss = Ss::pluck('kode_ss', 'id');

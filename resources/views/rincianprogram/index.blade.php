@@ -16,7 +16,7 @@
                                 <th>RO</th>
                                 <th>KP</th>
                                 <th>SK</th>
-                                <th>MAK</th>
+                                <th>Klasifikasi Penganggaran</th>
                                 <th>CODEBASE</th>
                                 <th>Aksi</th>
                             </tr>

@@ -15,7 +15,7 @@ class Rpk extends Model
         "kode_program",
         "rincian_program",
         "nama_kegiatan",
-        "TOR/KAK/ProposalProject",
+        "Proposal_Project",
         "Kebutuhan_Kegiatan",
         "Rencana_Jadwal_Pelaksanaan"
     ];

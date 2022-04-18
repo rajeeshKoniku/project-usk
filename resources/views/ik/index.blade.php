@@ -11,24 +11,34 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Kode SS</th>
                                 <th>Kode IK</th>
                                 <th>Indikator Kinerja</th>
-                                <th>Kode SS</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                         @foreach($data as $x)
+                         @foreach($IK as $dataIK)
                         <tr>
-                            <td >{{ $x->id }}</td>
-                            <td contenteditable="true">{{ $x->kode_ik}}</td>
-                            <td contenteditable="true">{{ $x->indikator_kinerja}}</td>
-                            <td contenteditable="true">{{ $x->ss_id}}</td>
+                            <td >{{ $dataIK->id }}</td>
+                            <td>
+                                <select name="kode_ss" type="text" id="kode_ss" class="d-inline form-control w-auto required">
+                                @foreach($SS as $dataSS)
+                                    @if($dataSS->kode_ss === $dataIK->ss_id)
+                                        <option value="{{$dataSS->kode_ss}}" selected="true">{{$dataSS->kode_ss}}</option>
+                                    @else
+                                        <option value="{{$dataSS->kode_ss}}" >{{$dataSS->kode_ss}}</option>
+                                    @endif
+                                @endforeach
+                                </select>
+                            </td>
+                            <td contenteditable="true">{{ $dataIK->kode_ik}}</td>
+                            <td contenteditable="true">{{ $dataIK->indikator_kinerja}}</td>
 
                             <td>
-                                <span class="del_btn"><i role="button" class="rounded bg-danger p-3 fa-solid fa-trash fa-sm"></i></span>
-                                <span class="save_btn"><i role="button" class="rounded bg-info p-3 fa-solid fa-floppy-disk fa-sm"></i></span>
-                                <span class="new_btn"><i role="button" class="rounded bg-success p-3 fa-solid fa-plus fa-sm"></i></span>
+                                <span class="del_btn"><i role="button" class="rounded bg-danger py-3 px-2 fa-solid fa-trash fa-sm"></i></span>
+                                <span class="save_btn"><i role="button" class="rounded bg-info py-3 px-2 fa-solid fa-floppy-disk fa-sm"></i></span>
+                                <span class="new_btn"><i role="button" class="rounded bg-success py-3 px-2 fa-solid fa-plus fa-sm"></i></span>
                             </td>
                         </tr>
                         @endforeach
@@ -38,7 +48,6 @@
             </div>
         </div>
     </div>
-    @include('ik.modalTambah')
 @endsection
 
  @push('scripts')

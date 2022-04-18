@@ -10,7 +10,7 @@
             <li> <a href="{{ route('ik.index') }}"><i class="bx bx-right-arrow-alt"></i>Iku</a></li>
             <li> <a href="{{ route('program.index') }}"><i class="bx bx-right-arrow-alt"></i>Program</a></li>
             <li> <a href="{{ route('kkmentri.index') }}"><i class="bx bx-right-arrow-alt"></i>KK Mentri</a></li>
-            <li> <a href="{{ route('rincianprogram.index') }}"><i class="bx bx-right-arrow-alt"></i>Rincian Program</a></li>
+            <li> <a href="{{ route('rincianprogram.index') }}"><i class="bx bx-right-arrow-alt"></i>Rancangan Anggaran</a></li>
             {{-- <li> <a href="{{ route('kegiatan.index') }}"><i class="bx bx-right-arrow-alt"></i>Kegiatan</a></li>
             <li> <a href="{{ route('RincianKomponen.index') }}"><i class="bx bx-right-arrow-alt"></i>Rincian Komponen</a></li> --}}
         </ul>
@@ -20,14 +20,10 @@
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-category"></i>
             </div>
-            <div class="menu-title">File Input</div>
+            <div class="menu-title">Creating Data</div>
         </a>
         <ul>
-              <a href="widgets.html">
-            <div class="parent-icon"><i class='bx bx-cookie'></i>
-            </div>
-            <div class="menu-title">Widgets</div>
-        </a>
+             
         <a href="{{ route('kk.index') }}">
             <div class="parent-icon"><i class='bx bx-grid'></i>
             </div>

@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 class IkController extends Controller
 {
-   
     public function index()
     {
-        $data = Ik::get();
-        return view('ik.index',compact('data'));
+        $IK = Ik::get();
+        $SS = Ss::get('kode_ss');
+        return view('ik.index',compact('IK','SS'));
     }
     public function del(Request $x)
     {
@@ -23,15 +23,14 @@ class IkController extends Controller
     }
     public function add(Request $x)
     {
-        $lastData = Ik::latest()->first();
         $req = [
             "id"=> rand(1000,9999),
             "kode_ik" => $x->kode_ik,
             "indikator_kinerja" => $x->indikator_kinerja,
-            "ss_id" => $x->ss_id
+            "ss_id" => $x->kode_ss,
         ];
         Ik::UpdateOrCreate(["id" => $x->id],$req);
-        return response()->json(["SUKSES"]);
+        return response()->json(['SUKSES']);
     }
 
 }

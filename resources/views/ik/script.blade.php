@@ -5,8 +5,11 @@
                     let row = $(this).closest('tr').clone();
                     $.each(row.find('td'), function(i1, v1){
                         $(this).html('')
+                        if($(this).is(':nth-child(2)')){
+                            $(this).html("<select name='kode_ss' type='text' id='kode_ss' class='d-inline form-control w-auto required'>  @foreach($SS as $dataSS) @if($dataSS->kode_ss === $dataIK->ss_id) <option value='{{$dataSS->kode_ss}}' selected='true'>{{$dataSS->kode_ss}}</option> @else <option value='{{$dataSS->kode_ss}}' >{{$dataSS->kode_ss}}</option> @endif @endforeach</select>")
+                        }
                         if ($(this).is(':last-child')) {
-                            $(this).html("<span class='badge btn btn-danger del_btn'>Delete</span>  <span class='badge btn btn-success save_btn'>Save</span> <span class='badge btn btn-info new_btn'>Add row</span")
+                            $(this).html('<span class="del_btn"><i role="button" class="rounded bg-danger py-3 px-2 fa-solid fa-trash fa-sm"></i></span> <span class="save_btn"><i role="button" class="rounded bg-info py-3 px-2 fa-solid fa-floppy-disk fa-sm"></i></span> <span class="new_btn"><i role="button" class="rounded bg-success py-3 px-2 fa-solid fa-plus fa-sm"></i></span>')
                         }
                     })
 
@@ -20,9 +23,9 @@
                  $(document).on('click', ".save_btn",function(e){
                    let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
                    let id = setiapBaris[0]
-                   let kode_ik = setiapBaris[1]
-                   let ik = setiapBaris[2]
-                   let ss_id = setiapBaris[3]
+                   let kode_ss = $(this).closest('tr').find('select').val()
+                   let kode_ik = setiapBaris[2]
+                   let ik = setiapBaris[3]
 
                       $.ajax({
                            type:'POST',
@@ -32,13 +35,18 @@
                              id:id,
                             kode_ik:kode_ik,
                             indikator_kinerja:ik,
-                            ss_id:ss_id
+                            kode_ss:kode_ss
                             },
                            success:function(data){
-                             Swal.fire(
-                                  'Tambah Data Sukses!'
-                                )
-                             location.reload()
+                             Swal.fire({
+                                  title: 'DATA SUKSES TERSIMPAN',
+                                  confirmButtonText: 'OK',
+                                }).then((result) => {
+                                  /* Read more about isConfirmed, isDenied below */
+                                  if (result.isConfirmed) {
+                                    location.reload()
+                                  }
+                                })
                            }
                         });
                 })
@@ -63,12 +71,15 @@
                             id:setiapBaris[0],
                             },
                            success:function(data){
-                                Swal.fire(
-                                  'Terhapus!',
-                                  'Data sudah terhapus.',
-                                  'success'
-                                )
-                                location.reload()
+                                 Swal.fire({
+                                  title: 'DATA SUKSES TERHAPUS',
+                                  confirmButtonText: 'OK',
+                                }).then((result) => {
+                                  /* Read more about isConfirmed, isDenied below */
+                                  if (result.isConfirmed) {
+                                    location.reload()
+                                  }
+                                })
                               }
                             })
                            }
