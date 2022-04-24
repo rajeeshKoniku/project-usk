@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rpk;
+use App\Models\Rab;
 use App\Models\Kk;
 use App\Models\RincianProgram;
 use App\Models\Program;
@@ -42,30 +43,38 @@ class RpkController extends Controller
             "kode_program" => $x->kode_program,
             "rincian_program" => $x->rincian_program,
             "nama_kegiatan" => $x->nama_kegiatan,
-            "kebutuhan_kegiatan" => $x->kebutuhan_kegiatan,
+            "Proposal_Project" => $x->proposal_project,
+            "Kebutuhan_Kegiatan" => $x->kebutuhan_kegiatan,
             "Rencana_Jadwal_Pelaksanaan" => $x->Rencana_Jadwal_Pelaksanaan,
+            "tahun" => $x->tahun,
         ];
+        Rab::create([
+            "rincian_program" => $x->rincian_program,
+            "nama_kegiatan" => $x->nama_kegiatan,
+            "kebutuhan_kegiatan" => $x->kebutuhan_kegiatan,
+        ]);
         Rpk::UpdateOrCreate(["id" => $x->id],$req);
+        return response()->json(["OK", $req]);
     }
     public function insertImg(Request $x)
     {
          if(!empty($_FILES['file'])){
-                $upload = 'err';
-                $targetDir = "uploads/";
-                $allowTypes = array('pdf', 'doc', 'docx', 'jpg', 'png', 'jpeg', 'gif');
+            $upload = 'err';
+            $targetDir = "uploads/";
+            $allowTypes = array('pdf', 'doc', 'docx', 'jpg', 'png', 'jpeg', 'gif');
 
-                $fileName = basename($_FILES['file']['name']);
-                $targetFilePath = $targetDir.$fileName;
+            $fileName = basename($_FILES['file']['name']);
+            $targetFilePath = $targetDir.$fileName;
 
-                // memeriksa apakah tipe file valid
-                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-                if(in_array($fileType, $allowTypes)){
-                    // upload file ke server
-                    if(move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)){
-                        $upload = 'ok';
-                    }
+            //memeriksa apakah tipe file valid
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+            if(in_array($fileType, $allowTypes)){
+                // upload file ke server
+                if(move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)){
+                    $upload = 'ok';
                 }
             }
+        }
 
             return response()->json(['ok']);
     }

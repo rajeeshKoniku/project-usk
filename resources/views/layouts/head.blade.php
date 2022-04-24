@@ -35,5 +35,46 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
 
+{{-- custom css --}}
+<style>
+table tr{
+  color: white;
+}
+.card{
+    background-color: #3D373F;
+    color: white;
+  }
+
+</style>
+{{-- <style>
+    body {
+  font-size: 140%;
+}
+
+h2 {
+  text-align: center;
+  padding: 20px 0;
+}
+table {
+    background-color: gray;
+}
+table caption {
+    padding: .5em 0;
+}
+
+table.dataTable th,
+table.dataTable td {
+  white-space: nowrap;
+}
+
+.p {
+  text-align: center;
+  padding-top: 140px;
+  font-size: 14px;
+}
+
+</style> --}}
+{{-- custom css --}}
+
  @stack('styles')
  <title>@yield('title')</title>

@@ -34,7 +34,7 @@
             </div>
             <div class="menu-title">Rencana Program Kegiatan</div>
         </a>
-        <a href="{{ route('kk.index') }}">
+        <a href="{{ route('rab.index') }}">
             <div class="parent-icon"><i class='bx bx-grid'></i>
             </div>
             <div class="menu-title">Rincian Anggaran Biaya</div>
@@ -47,18 +47,43 @@
         </ul>
     </li>
 
+    {{-- verifikasi --}}
+       <li>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-category"></i>
+            </div>
+            <div class="menu-title">Data Verification</div>
+        </a>
+        <ul>
+
+        <a href="{{ route('kk.index') }}">
+            <div class="parent-icon"><i class='bx bx-grid'></i>
+            </div>
+            <div class="menu-title">Verifikasi Perkin</div>
+        </a>
+        <a href="{{ route('kk.index') }}">
+            <div class="parent-icon"><i class='bx bx-grid'></i>
+            </div>
+            <div class="menu-title">Verifikasi Rekat</div>
+        </a>
+
+        </ul>
+    </li>
+
+    {{-- verifikasi --}}
+
     {{-- laporan --}}
     <li>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-category"></i>
             </div>
-            <div class="menu-title">Laporan</div>
+            <div class="menu-title">Report</div>
         </a>
         <ul>
         <a href="{{ route('kk.index') }}">
             <div class="parent-icon"><i class='bx bx-grid'></i>
             </div>
-            <div class="menu-title">Realita</div>
+            <div class="menu-title">LALITA</div>
         </a>
         <a href="{{ route('kk.index') }}">
             <div class="parent-icon"><i class='bx bx-grid'></i>

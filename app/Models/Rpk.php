@@ -17,6 +17,7 @@ class Rpk extends Model
         "nama_kegiatan",
         "Proposal_Project",
         "Kebutuhan_Kegiatan",
-        "Rencana_Jadwal_Pelaksanaan"
+        "Rencana_Jadwal_Pelaksanaan",
+        "tahun",
     ];
 }

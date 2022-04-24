@@ -8,6 +8,7 @@ use App\Http\Controllers\RpkController;
 use App\Http\Controllers\KkController;
 use App\Http\Controllers\RincianProgramController;
 use App\Http\Controllers\KKmentriController;
+use App\Http\Controllers\RabController;
 use App\Models\Ik;
 use App\Models\Program;
 use App\Models\Ss;
@@ -55,6 +56,15 @@ Route::post('/rincianprogram/add', [RincianProgramController::class, 'add'])->na
 Route::get('/kk', [KkController::class, 'index'])->name('kk.index');
 Route::post('/kk/del', [KkController::class, 'del'])->name('kk.del');
 Route::post('/kk/add', [KkController::class, 'add'])->name('kk.add');
+
+//RAB Controller
+Route::get('/rab', [RabController::class, 'index'])->name('rab.index');
+Route::post('/rab/del', [RabController::class, 'del'])->name('rab.del');
+Route::post('/rab/add', [RabController::class, 'add'])->name('rab.add');
+Route::post('/rab/addCatalog', [RabController::class, 'addCatalog'])->name('rab.addCatalog');
+Route::post('/rab/addProject', [RabController::class, 'addProject'])->name('rab.addProject');
+Route::post('/rab/addRab', [RabController::class, 'addRab'])->name('rab.addRab');
+Route::post('/rab/addGambar', [RabController::class, 'addGambar'])->name('rab.addGambar');
 
 //RPK Controller
 Route::get('/rpk', [RpkController::class, 'index'])->name('rpk.index');
