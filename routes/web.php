@@ -10,6 +10,10 @@ use App\Http\Controllers\KkController;
 use App\Http\Controllers\RincianProgramController;
 use App\Http\Controllers\KKmentriController;
 use App\Http\Controllers\RabController;
+use App\Http\Controllers\UnitKerjaController;
+use App\Http\Controllers\RangkaController;
+use App\Models\Ik;
+use App\Models\Program;
 use App\Models\Ss;
 
 /*
@@ -46,6 +50,11 @@ Route::post('/kkmentri/del', [KKmentriController::class, 'del'])->name('kkmentri
 Route::post('/kkmentri/add', [KKmentriController::class, 'add'])->name('kkmentri.add');
 Route::get('/kkmentri/get', [KKmentriController::class, 'get'])->name('kkmentri.get');
 
+//KK Controller
+Route::get('/unitkerja', [UnitKerjaController::class, 'index'])->name('unitkerja.index');
+Route::post('/unitkerja/del', [UnitKerjaController::class, 'del'])->name('unitkerja.del');
+Route::post('/unitkerja/add', [UnitKerjaController::class, 'add'])->name('unitkerja.add');
+
 //Rincian Program Controller
 Route::get('/rincianprogram', [RincianProgramController::class, 'index'])->name('rincianprogram.index');
 Route::post('/rincianprogram/del', [RincianProgramController::class, 'del'])->name('rincianprogram.del');
@@ -55,6 +64,12 @@ Route::post('/rincianprogram/add', [RincianProgramController::class, 'add'])->na
 Route::get('/kk', [KkController::class, 'index'])->name('kk.index');
 Route::post('/kk/del', [KkController::class, 'del'])->name('kk.del');
 Route::post('/kk/add', [KkController::class, 'add'])->name('kk.add');
+
+//Rangka Controller
+Route::get('/rangka', [RangkaController::class, 'index'])->name('rangka.index');
+Route::post('/rangka/del', [RangkaController::class, 'del'])->name('rangka.del');
+Route::post('/rangka/add', [RangkaController::class, 'add'])->name('rangka.add');
+Route::get('/rangka/getAcc', [RangkaController::class, 'ambilAkun'])->name('rangka.ambilAkun');
 
 //RAB Controller
 Route::get('/rab', [RabController::class, 'index'])->name('rab.index');

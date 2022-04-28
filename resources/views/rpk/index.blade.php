@@ -5,10 +5,11 @@
 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                            <table id="tabel" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Unit Kerja</th>
                                  <th>Kode IK</th>
                                  <th>Indikator Kinerja</th>
                                 <th>Kode Program</th>
@@ -19,22 +20,20 @@
                                 <th>Kebutuhan Kegiatan</th>
                                 <th>Rencana Jadwal Pelaksanaan</th>
                                 <th>Tahun</th>
-                                <th width="60%">Aksi</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                                <tbody>
+
                          @foreach($RPK as $dataRPK)
                         <tr id="attachment" class="item">
                             <td >{{ $dataRPK->id }}</td>
+                            <td></td>
                             <td>
                                 <select name="kode_ik" type="text" id="kode_ik" class="kode_ik d-inline form-control w-auto required">
-                                <option value="SILAHKAN PILIH" >SILAHKAN PILIH</option>
+                                <option value="SILAHKAN PILIH" selected="true">SILAHKAN PILIH</option>
                                 @foreach($KK as $dataKK)
-                                    @if($dataKK->kode_ik === $dataRPK->kode_ik)
-                                        <option value="{{$dataKK->kode_ik}}" selected="true">{{$dataKK->kode_ik}}</option>
-                                    @else
-                                        <option value="{{$dataKK->kode_ik}}" >{{$dataKK->kode_ik}}</option>
-                                    @endif
+                                    <option  value="{{$dataKK->kode_ik}}" >{{$dataKK->kode_ik}}</option>
                                 @endforeach
                                 </select>
                             </td>
@@ -47,10 +46,10 @@
                                 <select name="rincian_program" type="text" id="rincian_program" class="rincian_program d-inline form-control w-auto required">
                                 <option value="SILAHKAN PILIH" >SILAHKAN PILIH</option>
                                 @foreach($RINCIANPROGRAM as $dataMAK)
-                                    @if($dataMAK->MAK === $dataRPK->rincian_program)
-                                        <option value="{{$dataMAK->MAK}}" selected="true">{{$dataMAK->MAK}}</option>
+                                    @if($dataMAK->Rip === $dataRPK->rincian_program)
+                                        <option value="{{$dataMAK->Rip}}" selected="true">{{$dataMAK->Rip}}</option>
                                     @else
-                                        <option value="{{$dataMAK->MAK}}" >{{$dataMAK->MAK}}</option>
+                                        <option value="{{$dataMAK->Rip}}" >{{$dataMAK->Rip}}</option>
                                     @endif
                                 @endforeach
                             </td>
@@ -59,7 +58,6 @@
                                 <div id="uploadStatus"></div>
                                <form id="uploadForm" enctype="multipart/form-data">
                                   <input type="file" class="fu" name="file" id="fileInput">
-                                  <input id="submit" type="submit">submit</input>
                                 </form>
                             </td>
                             <td contenteditable="true">{{ $dataRPK->Kebutuhan_Kegiatan}}</td>

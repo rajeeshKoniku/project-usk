@@ -1,14 +1,9 @@
 <script type="text/javascript">
-
         $(document).ready(function() {
+              // $('#tabel').DataTable({
 
-
-              $('#example').DataTable({
-                 "initComplete": function (settings, json) {
-                    $("#example").wrap("<div style='overflow:auto; width:100%;position:relative;'></div>");
-                  },
-                } )
-              //ambil setiap nilai td
+              //   } )
+              // //ambil setiap nilai td
              // $('table > tbody  > tr').each(function(index, tr) {
              //         if (tr === "SILAHKAN PILIH") { // or whatever
              //            return false;
@@ -143,14 +138,13 @@
                  $(document).on('click', ".save_btn",function(e){
                    var file = $(this).closest('tr').find('#uploadForm')
                    let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
-                   let prevId = $(this).closest('tr').prev()[0].innerText.split("\t").slice(0, -1)[0]
                    let id = setiapBaris[0]
                    let kode_ik = $(this).closest('tr').find('select.kode_ik').val()
                    let kode_program = $(this).closest('tr').find('select.kode_prog').val()
                    let rincian_program = $(this).closest('tr').find('select.rincian_program').val()
-                   let nama_kegiatan = setiapBaris[6]
+                   let nama_kegiatan = setiapBaris[7]
                    let proposal_project = file[0][0].value.replace("C:\\fakepath\\","");
-                   let kebutuhan_kegiatan = setiapBaris[8]
+                   let kebutuhan_kegiatan = setiapBaris[9]
                    let Rencana_Jadwal_Pelaksanaan = $(this).closest('tr').find('select.Rencana_Jadwal_Pelaksanaan').val()
                    let tahun = $(this).closest('tr').find('select.tahun').val()
 
@@ -186,7 +180,6 @@
                            data:{
                              "_token": "{{ csrf_token() }}",
                                id,
-                               prevId,
                                kode_ik,
                                kode_program,
                                rincian_program,
@@ -198,14 +191,14 @@
                             },
                            success:function(data){
                            console.log(data)
-                            Swal.fire({
-                                  title: data,
-                                  confirmButtonText: 'OK',
-                                }).then((result) => {
-                                  if (result.isConfirmed) {
-                                    location.reload()
-                                  }
-                                })
+                            // Swal.fire({
+                            //       title: data,
+                            //       confirmButtonText: 'OK',
+                            //     }).then((result) => {
+                            //       if (result.isConfirmed) {
+                            //         location.reload()
+                            //       }
+                            //     })
                            }
                         });
                 })

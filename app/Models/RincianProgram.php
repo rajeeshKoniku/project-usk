@@ -8,16 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class RincianProgram extends Model
 {
     use HasFactory;
-    protected $table = 'tb_rincian_program';
-    protected $primaryKey = 'id_kegiatan';
+    protected $table = 'tb_rancangan_anggaran';
     protected $fillable =
     [
+        "codebase",
+        "Rip",
         "Keg",
         "KRO",
         "RO",
         "KP",
         "SK",
         "MAK",
-        "CODEBASE",
     ];
+    public $timestamps = false;
 }

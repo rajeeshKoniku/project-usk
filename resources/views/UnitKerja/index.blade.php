@@ -1,6 +1,6 @@
 <!-- Menghubungkan dengan view template master -->
 @extends('layouts.layout')
-@section('judul', 'Halaman KK')
+@section('judul', 'Halaman Unit Kerja')
 @section('content')
 
     <div class="container">
@@ -12,30 +12,18 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Unit Kerja</th>
-                                <th>Kode IK</th>
-                                <th>PK Mentri</th>
-                                <th>TW 1</th>
-                                <th>TW 2</th>
-                                <th>TW 3</th>
-                                <th>TW 4</th>
-                                <th>Bobot</th>
+                                <th>Nama Pengguna</th>
+                                <th>Level Pengguna</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                         @foreach($data as $x)
+                         @foreach($UNITKERJA as $dataUnitKerja)
                         <tr>
-                            <td >{{ $x->id }}</td>
-                            <td ></td>
-                            <td>
-                               {{ $x->kode_ik}}
-                            </td>
-                            <td contenteditable="false">{{ $x->pk_menteri}}</td>
-                            <td contenteditable="true">{{ $x->tw_1}}</td>
-                            <td contenteditable="true">{{ $x->tw_2}}</td>
-                            <td contenteditable="true">{{ $x->tw_3}}</td>
-                            <td contenteditable="true">{{ $x->tw_4}}</td>
-                            <td contenteditable="false">{{ $x->bobot}}</td>
+                            <td>{{ $dataUnitKerja->id }}</td>
+                            <td contenteditable="true">{{ $dataUnitKerja->unit_kerja}}</td>
+                            <td contenteditable="true">{{ $dataUnitKerja->nama_pengguna}}</td>
+                            <td contenteditable="true">{{ $dataUnitKerja->level_pengguna}}</td>
 
                             <td>
                                 <span class="del_btn"><i role="button" class="rounded bg-danger p-3 fa-solid fa-trash fa-sm"></i></span>
@@ -53,5 +41,5 @@
 @endsection
 
  @push('scripts')
-    @include('kk.script')
+    @include('UnitKerja.script')
 @endpush

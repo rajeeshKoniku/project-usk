@@ -35,6 +35,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
 
+
 {{-- custom css --}}
 <style>
 table tr{
@@ -44,7 +45,19 @@ table tr{
     background-color: #3D373F;
     color: white;
   }
-
+.kode_ik{
+     font-size: 10px;
+     font-weight: bold;
+}
+.kode_prog{
+   font-size: 10px;
+     font-weight: bold;
+}
+/*select {
+  max-width: 100%;
+  text-overflow: ellipsis;
+}
+*/
 </style>
 {{-- <style>
     body {
