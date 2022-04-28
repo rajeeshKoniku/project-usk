@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DataVerification;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IkController;
 use App\Http\Controllers\ProgramController;
@@ -9,8 +10,6 @@ use App\Http\Controllers\KkController;
 use App\Http\Controllers\RincianProgramController;
 use App\Http\Controllers\KKmentriController;
 use App\Http\Controllers\RabController;
-use App\Models\Ik;
-use App\Models\Program;
 use App\Models\Ss;
 
 /*
@@ -73,6 +72,10 @@ Route::get('/rpk/get', [RpkController::class, 'get'])->name('rpk.get');
 Route::post('/rpk/add', [RpkController::class, 'add'])->name('rpk.add');
 Route::get('/rpk/getSingleProg', [RpkController::class, 'getSingleProg'])->name('rpk.getSingleProg');
 Route::post('/rpk/insertImg', [RpkController::class, 'insertImg'])->name('rpk.insertImg');
+
+Route::get('/verification-perkin', [DataVerification::class, 'verificationPerkin'])->name('verification.perkin');
+Route::post('/verification-perkin', [DataVerification::class, 'updateVerificationPerkin'])->name('verification.perkin_update');
+Route::get('/verification-rekat', [DataVerification::class, 'verificationRekat'])->name('verification.rekat');
 
 Route::get('/tes', function () {
     $ss = Ss::pluck('kode_ss', 'id');

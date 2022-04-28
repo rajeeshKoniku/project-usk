@@ -14,5 +14,9 @@ class Kk extends Model
            'tw_2',
            'tw_3',
            'tw_4',
+           'verifikasi'
     ];
+
+    const DISETUJUI = 1;
+    const DITOLAK = 2;
 }

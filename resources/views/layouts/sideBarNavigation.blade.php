@@ -23,7 +23,7 @@
             <div class="menu-title">Create Data</div>
         </a>
         <ul>
-             
+
         <a href="{{ route('kk.index') }}">
             <div class="parent-icon"><i class='bx bx-grid'></i>
             </div>
@@ -56,12 +56,12 @@
         </a>
         <ul>
 
-        <a href="{{ route('kk.index') }}">
+        <a href="{{ route('verification.perkin') }}">
             <div class="parent-icon"><i class='bx bx-grid'></i>
             </div>
             <div class="menu-title">Verifikasi Perkin</div>
         </a>
-        <a href="{{ route('kk.index') }}">
+        <a href="{{ route('kk.index')}}">
             <div class="parent-icon"><i class='bx bx-grid'></i>
             </div>
             <div class="menu-title">Verifikasi Rekat</div>
