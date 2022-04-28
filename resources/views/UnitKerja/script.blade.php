@@ -2,11 +2,12 @@
             $(document).ready(function($){
                 //add
                 $(document).on('click', ".new_btn",function(e){
+
                     let row = $(this).closest('tr').clone();
                     $.each(row.find('td'), function(i1, v1){
                         $(this).html('')
                         if ($(this).is(':last-child')) {
-                            $(this).html("<span class='del_btn'><i role='button' class=' rounded bg-danger py-3 px-2 fa-solid fa-trash fa-sm'></i></span>  <span class=' bg-info save_btn'><i role='button' class='rounded bg-info py-3 px-2 fa-solid fa-floppy-disk fa-sm'></i></span> <span class=' bg-success new_btn'><i role='button' class='rounded bg-success py-3 px-2 fa-solid fa-plus fa-sm'></i</span")
+                            $(this).html("<span class='badge btn btn-danger del_btn'>Delete</span>  <span class='badge btn btn-success save_btn'>Save</span> <span class='badge btn btn-info new_btn'>Add row</span")
                         }
                     })
 
@@ -20,30 +21,22 @@
                  $(document).on('click', ".save_btn",function(e){
                    let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
                    let id = setiapBaris[0]
-                   let Rip = setiapBaris[2]
-                   let Keg = setiapBaris[3]
-                   let KRO = setiapBaris[4]
-                   let RO = setiapBaris[5]
-                   let KP = setiapBaris[6]
-                   let SK = setiapBaris[7]
-                   let MAK = setiapBaris[8]
+                   let unitkerja = setiapBaris[1]
+                   let nama = setiapBaris[2]
+                   let level = setiapBaris[3]
 
                       $.ajax({
                            type:'POST',
-                           url:"{{ route('rincianprogram.add') }}",
+                           url:"{{ route('unitkerja.add') }}",
                            data:{
                              "_token": "{{ csrf_token() }}",
-                             id:id,
-                            Rip:Rip,
-                            Keg:Keg,
-                            KRO:KRO,
-                            RO:RO,
-                            KP:KP,
-                            SK:SK,
-                            MAK:MAK,
+                            id,
+                            unitkerja,
+                            nama,
+                            level
                             },
                            success:function(data){
-                            Swal.fire({
+                             Swal.fire({
                                   title: 'DATA SUKSES TERSIMPAN',
                                   confirmButtonText: 'OK',
                                 }).then((result) => {
@@ -52,7 +45,6 @@
                                     location.reload()
                                   }
                                 })
-                             
                            }
                         });
                 })
@@ -70,21 +62,21 @@
                             }).then((result) => {
                               if (result.isConfirmed) {
                                  $.ajax({
-                               type:'POST',
-                               url:"{{ route('rincianprogram.del') }}",
-                               data:{
-                                 "_token": "{{ csrf_token() }}",
-                                id:setiapBaris[0],
-                                },
-                               success:function(data){
-                                    Swal.fire(
-                                      'Terhapus!',
-                                      'Data sudah terhapus.',
-                                      'success'
-                                    )
-                                    location.reload()
-                                  }
-                                })
+                                   type:'POST',
+                                   url:"{{ route('unitkerja.del') }}",
+                                   data:{
+                                     "_token": "{{ csrf_token() }}",
+                                    id:setiapBaris[0],
+                                    },
+                                   success:function(data){
+                                        Swal.fire(
+                                          'Terhapus!',
+                                          'Data sudah terhapus.',
+                                          'success'
+                                        )
+                                        location.reload()
+                                      }
+                            })
                            }
                         });
 

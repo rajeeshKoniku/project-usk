@@ -11,6 +11,7 @@
             <li> <a href="{{ route('program.index') }}"><i class="bx bx-right-arrow-alt"></i>Program</a></li>
             <li> <a href="{{ route('kkmentri.index') }}"><i class="bx bx-right-arrow-alt"></i>KK Mentri</a></li>
             <li> <a href="{{ route('rincianprogram.index') }}"><i class="bx bx-right-arrow-alt"></i>Rancangan Anggaran</a></li>
+            <li> <a href="{{ route('unitkerja.index') }}"><i class="bx bx-right-arrow-alt"></i>User</a></li>
             {{-- <li> <a href="{{ route('kegiatan.index') }}"><i class="bx bx-right-arrow-alt"></i>Kegiatan</a></li>
             <li> <a href="{{ route('RincianKomponen.index') }}"><i class="bx bx-right-arrow-alt"></i>Rincian Komponen</a></li> --}}
         </ul>
@@ -39,7 +40,7 @@
             </div>
             <div class="menu-title">Rincian Anggaran Biaya</div>
         </a>
-        <a href="{{ route('kk.index') }}">
+        <a href="{{ route('rangka.index') }}">
             <div class="parent-icon"><i class='bx bx-grid'></i>
             </div>
             <div class="menu-title">Rancangan Anggaran</div>

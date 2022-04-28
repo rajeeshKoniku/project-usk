@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Rpk;
 use App\Models\Rab;
 use App\Models\Kk;
+use App\Models\Rangka;
 use App\Models\RincianProgram;
 use App\Models\Program;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,7 @@ class RpkController extends Controller
     public function index()
     {
         $RPK = Rpk::get();
-        $RINCIANPROGRAM = RincianProgram::get()->all('MAK');
+        $RINCIANPROGRAM = RincianProgram::select('Rip')->get()->unique('Rip');;
         $KK = Kk::whereNotNull(['tw_1','tw_2','tw_3','tw_4',])->get()->all('kode_ik');
         return view('rpk.index',compact('RPK', 'KK','RINCIANPROGRAM'));
     }
@@ -53,8 +54,15 @@ class RpkController extends Controller
             "nama_kegiatan" => $x->nama_kegiatan,
             "kebutuhan_kegiatan" => $x->kebutuhan_kegiatan,
         ]);
+        $uwu = DB::select(DB::raw("SELECT tb_rancangan_anggaran.codebase, tb_rancangan_anggaran.Rip, tb_rab.rincian_program from tb_rab INNER JOIN tb_rancangan_anggaran ON tb_rab.rincian_program = tb_rancangan_anggaran.Rip WHERE tb_rancangan_anggaran.Rip = '$x->rincian_program' AND tb_rancangan_anggaran.codebase REGEXP 'CAA|CBJ'"));
+        Rangka::create([
+            "codebase" => $uwu[0]->codebase,
+            "rincian_program" => $x->rincian_program,
+            "nama_kegiatan" => $x->nama_kegiatan,
+            "kebutuhan_kegiatan" => $x->kebutuhan_kegiatan,
+        ]);
         Rpk::UpdateOrCreate(["id" => $x->id],$req);
-        return response()->json(["OK", $req]);
+        return 'SUKSES';
     }
     public function insertImg(Request $x)
     {

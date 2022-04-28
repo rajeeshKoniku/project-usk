@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rab;
 use App\Models\Rpk;
+use App\Models\Rangka;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 

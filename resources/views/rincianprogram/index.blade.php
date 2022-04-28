@@ -1,6 +1,6 @@
 <!-- Menghubungkan dengan view template master -->
 @extends('layouts.layout')
-@section('judul', 'Halaman Rincian Program')
+@section('judul', 'Halaman Rancangan Anggaran')
 @section('content')
 
     <div class="container">
@@ -11,27 +11,31 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>CODEBASE</th>
+                                <th>Rip</th>
                                 <th>Keg</th>
                                 <th>KRO</th>
                                 <th>RO</th>
                                 <th>KP</th>
                                 <th>SK</th>
-                                <th>Klasifikasi Penganggaran</th>
-                                <th>CODEBASE</th>
+                                <th>AK</th>
+                                <th>MAK</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                         @foreach($data as $x)
+                         @foreach($RincianProgram as $data)
                         <tr>
-                            <td >{{ $x->id_kegiatan }}</td>
-                            <td contenteditable="true">{{ $x->Keg}}</td>
-                            <td contenteditable="true">{{ $x->KRO}}</td>
-                            <td contenteditable="true">{{ $x->RO}}</td>
-                            <td contenteditable="true">{{ $x->KP}}</td>
-                            <td contenteditable="true">{{ $x->SK}}</td>
-                            <td contenteditable="true">{{ $x->MAK}}</td>
-                            <td contenteditable="FALSE">{{ $x->CODEBASE}}</td>
+                            <td >{{ $data->id }}</td>
+                            <td>{{ $data->codebase}}</td>
+                            <td contenteditable="true">{{ $data->Rip}}</td>
+                            <td contenteditable="true">{{ $data->Keg}}</td>
+                            <td contenteditable="true">{{ $data->KRO}}</td>
+                            <td contenteditable="true">{{ $data->RO}}</td>
+                            <td contenteditable="true">{{ $data->KP}}</td>
+                            <td contenteditable="true">{{ $data->SK}}</td>
+                            <td contenteditable="true">{{ $data->AK}}</td>
+                            <td contenteditable="true">{{ $data->MAK}}</td>
                             <td>
                                 <span class="del_btn"><i role="button" class="rounded bg-danger py-3 px-2 fa-solid fa-trash fa-sm"></i></span>
                                 <span class="save_btn"><i role="button" class="rounded bg-info py-3 px-2 fa-solid fa-floppy-disk fa-sm"></i></span>

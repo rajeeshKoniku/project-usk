@@ -6,10 +6,11 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                            <table id="example" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>Unit Kerja</th>
                                         <th>Rincian Program</th>
                                         <th>Nama Kegiatan</th>
                                         <th>Kebutuhan Kegiatan</th>
@@ -23,14 +24,15 @@
                                         <th>Rab Detail</th>
                                         <th>Perencanaan Gambar</th>
                                         <th>Harga Satuan</th>
-                                        <th style="width: 100px;">Jumlah</th>
-                                        <th width="60%">Aksi</th>
+                                        <th >Jumlah</th>
+                                        <th >Aksi</th>
                                     </tr>
                                 </thead>
                                <tbody>
                                 @foreach($RAB as $dataRAB)
                                 <tr>
                                     <td> {{ $dataRAB->id }}</td>
+                                    <td> </td>
                                     <td> {{ $dataRAB->rincian_program }}</td>
                                     <td> {{ $dataRAB->nama_kegiatan }}</td>
                                     <td> {{ $dataRAB->kebutuhan_kegiatan }}</td>

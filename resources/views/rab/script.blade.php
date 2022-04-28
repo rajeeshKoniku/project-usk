@@ -1,6 +1,8 @@
         <script>
-            $(document).ready(function($){
-                
+            $(document).ready(function(){
+                //    $('#example').dataTable( {
+                //     scroller: true
+                // });
                 //add row
                 $(document).on('click', ".new_btn",function(e){
                     let row = $(this).closest('tr').clone();
@@ -112,15 +114,15 @@
                  $(document).on('click', ".save_btn",function(e){
                     let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
                     let id = setiapBaris[0]
-                    let kuantitas = setiapBaris[4]
-                    let kuantitas_2 = setiapBaris[5]
-                    let durasi = setiapBaris[6]
-                    let durasi_2 = setiapBaris[7]
-                    let kegiatan = setiapBaris[8]
-                    let kegiatan_2 = setiapBaris[9]
-                    let merk = setiapBaris[10]
-                    let type = setiapBaris[11]
-                    let harga_satuan = setiapBaris[16]
+                    let kuantitas = setiapBaris[5]
+                    let kuantitas_2 = setiapBaris[6]
+                    let durasi = setiapBaris[7]
+                    let durasi_2 = setiapBaris[8]
+                    let kegiatan = setiapBaris[9]
+                    let kegiatan_2 = setiapBaris[10]
+                    let merk = setiapBaris[11]
+                    let type = setiapBaris[12]
+                    let harga_satuan = setiapBaris[17]
                     let catalogFile = $(this).closest('tr').find('#catalog')
                     let projectFile = $(this).closest('tr').find('#proposal_project')
                     let rabdetailFile = $(this).closest('tr').find('#rab_detail')
@@ -162,14 +164,14 @@
                             },
                             success:function(data){
                             console.log(data);
-                            Swal.fire({
-                                  title: 'DATA SUKSES TERSIMPAN',
-                                  confirmButtonText: 'OK',
-                                }).then((result) => {
-                                  if (result.isConfirmed) {
-                                    location.reload()
-                                  }
-                                })
+                            // Swal.fire({
+                            //       title: 'DATA SUKSES TERSIMPAN',
+                            //       confirmButtonText: 'OK',
+                            //     }).then((result) => {
+                            //       if (result.isConfirmed) {
+                            //         location.reload()
+                            //       }
+                            //     })
                            }
                         });
                 })
