@@ -1,7 +1,7 @@
 <ul class="metismenu" id="menu">
     <li>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-category"></i>
+            <div class="parent-icon"><i class="bx bx-sort-z-a"></i>
             </div>
             <div class="menu-title">Data Center</div>
         </a>
@@ -9,9 +9,9 @@
             <li> <a href="{{ route('ss.index') }}"><i class="bx bx-right-arrow-alt"></i>Sasaran</a></li>
             <li> <a href="{{ route('ik.index') }}"><i class="bx bx-right-arrow-alt"></i>Iku</a></li>
             <li> <a href="{{ route('program.index') }}"><i class="bx bx-right-arrow-alt"></i>Program</a></li>
-            <li> <a href="{{ route('kkmentri.index') }}"><i class="bx bx-right-arrow-alt"></i>KK Mentri</a></li>
+            <li> <a href="{{ route('kkmentri.index') }}"><i class="bx bx-right-arrow-alt"></i>KK Menteri</a></li>
             <li> <a href="{{ route('rincianprogram.index') }}"><i class="bx bx-right-arrow-alt"></i>Rancangan Anggaran</a></li>
-            <li> <a href="{{ route('unitkerja.index') }}"><i class="bx bx-right-arrow-alt"></i>User</a></li>
+            <li> <a href="{{ route('unitkerja.index') }}"><i class="bx bx-right-arrow-alt"></i>Participants</a></li>
             {{-- <li> <a href="{{ route('kegiatan.index') }}"><i class="bx bx-right-arrow-alt"></i>Kegiatan</a></li>
             <li> <a href="{{ route('RincianKomponen.index') }}"><i class="bx bx-right-arrow-alt"></i>Rincian Komponen</a></li> --}}
         </ul>
@@ -19,7 +19,7 @@
 
     <li>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-category"></i>
+            <div class="parent-icon"><i class="bx bx-pen"></i>
             </div>
             <div class="menu-title">Create Data</div>
         </a>
@@ -51,7 +51,7 @@
     {{-- verifikasi --}}
        <li>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-category"></i>
+            <div class="parent-icon"><i class="bx bx-bug-alt"></i>
             </div>
             <div class="menu-title">Data Verification</div>
         </a>
@@ -76,7 +76,7 @@
     {{-- laporan --}}
     <li>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-category"></i>
+            <div class="parent-icon"><i class="bx bx-printer"></i>
             </div>
             <div class="menu-title">Report</div>
         </a>
@@ -90,6 +90,11 @@
             <div class="parent-icon"><i class='bx bx-grid'></i>
             </div>
             <div class="menu-title">PERKIN</div>
+        </a>
+        <a href="{{ route('kk.index') }}">
+            <div class="parent-icon"><i class='bx bx-grid'></i>
+            </div>
+            <div class="menu-title">REPRO</div>
         </a>
         <a href="{{ route('kk.index') }}">
             <div class="parent-icon"><i class='bx bx-grid'></i>

@@ -1,8 +1,10 @@
         <script>
             $(document).ready(function(){
-                //    $('#example').dataTable( {
-                //     scroller: true
-                // });
+              $('#dtHorizontalVerticalExample').DataTable({
+                "scrollX": true,
+                "scrollY": 200,
+              });
+              $('.dataTables_length').addClass('bs-select');
                 //add row
                 $(document).on('click', ".new_btn",function(e){
                     let row = $(this).closest('tr').clone();

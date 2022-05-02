@@ -1,8 +1,8 @@
 <script type="text/javascript">
         $(document).ready(function() {
-              // $('#tabel').DataTable({
+              $('#tabel').DataTable({
 
-              //   } )
+                } )
               // //ambil setiap nilai td
              // $('table > tbody  > tr').each(function(index, tr) {
              //         if (tr === "SILAHKAN PILIH") { // or whatever
@@ -68,7 +68,7 @@
                                 $('.kode_prog').empty()
                             }else{
                                 indikator.text(data[1][0].indikator_kinerja)
-                               
+                                 $('.program').empty();
                                  $('.kode_prog').empty();
                                  let option = new Option("SILAHKAN PILIH", "-"); $('.kode_prog').append($(option));
                                  for(let i = 0;i< data.length;i++){

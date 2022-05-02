@@ -12,6 +12,7 @@ class Rangka extends Model
     protected $fillable =
     [
         'codebase',
+        'kode_prog',
         'rincian_program',
         'nama_kegiatan',
         'kebutuhan_kegiatan',

@@ -50,7 +50,7 @@ Route::post('/kkmentri/del', [KKmentriController::class, 'del'])->name('kkmentri
 Route::post('/kkmentri/add', [KKmentriController::class, 'add'])->name('kkmentri.add');
 Route::get('/kkmentri/get', [KKmentriController::class, 'get'])->name('kkmentri.get');
 
-//KK Controller
+//UNIT KERJA Controller
 Route::get('/unitkerja', [UnitKerjaController::class, 'index'])->name('unitkerja.index');
 Route::post('/unitkerja/del', [UnitKerjaController::class, 'del'])->name('unitkerja.del');
 Route::post('/unitkerja/add', [UnitKerjaController::class, 'add'])->name('unitkerja.add');
@@ -64,6 +64,7 @@ Route::post('/rincianprogram/add', [RincianProgramController::class, 'add'])->na
 Route::get('/kk', [KkController::class, 'index'])->name('kk.index');
 Route::post('/kk/del', [KkController::class, 'del'])->name('kk.del');
 Route::post('/kk/add', [KkController::class, 'add'])->name('kk.add');
+Route::post('/kk/add_nip', [KkController::class, 'add_nip'])->name('kk.add_nip');
 
 //Rangka Controller
 Route::get('/rangka', [RangkaController::class, 'index'])->name('rangka.index');

@@ -1,5 +1,37 @@
         <script>
             $(document).ready(function($){
+                $('.new_row_btn').click(function() {
+                  $("#kk").append('<td></td><td></td><td></td> <td contenteditable="false" style="width: 100px:"></td><td style="width: 100pdataKK" contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td> <td contenteditable="false"></td><td><span class="del_btn"><i role="button" class="rounded bg-danger text-white mr-1 p-3 fa-solid fa-trash fa-sm"></i></span><span class="save_btn"><i role="button" class="text-white mr-1 rounded bg-info p-3 fa-solid fa-floppy-disk fa-sm"></i></span><span class="new_btn"><i role="button" class="text-white mr-1 rounded bg-success p-3 fa-solid fa-plus fa-sm"></i></span></td>');
+               });
+                $(document).on('click', '.save_nip_btn', function(e){
+                    let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
+                    let kode_ik = setiapBaris[0]
+                    let nip = setiapBaris[1]
+                    let nama_pimpinan = setiapBaris[2]
+
+                     $.ajax({
+                           type:'POST',
+                           url:"{{ route('kk.add_nip') }}",
+                           data:{
+                            "_token": "{{ csrf_token() }}",
+                            kode_ik,
+                            nip,
+                            nama_pimpinan
+                            },
+                           success:function(data){
+                             console.log(data);
+                             // Swal.fire({
+                             //      title: 'DATA SUKSES TERSIMPAN',
+                             //      confirmButtonText: 'OK',
+                             //    }).then((result) => {
+                             //      if (result.isConfirmed) {
+                             //        location.reload()
+                             //      }
+                             //    })
+                           }
+                        });
+                })
+
                 //add
                 $(document).on('click', ".new_btn",function(e){
 
@@ -22,10 +54,11 @@
                    let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
                    let id = setiapBaris[0]
                    let kode_ik = $(this).closest('tr').find('select').val()
-                   let tw_1 = setiapBaris[3]
-                   let tw_2 = setiapBaris[4]
-                   let tw_3 = setiapBaris[5]
-                   let tw_4 = setiapBaris[6]
+                   let satuan = setiapBaris[4]
+                   let tw_1 = setiapBaris[5]
+                   let tw_2 = setiapBaris[6]
+                   let tw_3 = setiapBaris[7]
+                   let tw_4 = setiapBaris[8]
 
                       $.ajax({
                            type:'POST',
@@ -34,6 +67,7 @@
                              "_token": "{{ csrf_token() }}",
                              id:id,
                             kode_ik:kode_ik,
+                            satuan:satuan,
                             tw_1:tw_1,
                             tw_2:tw_2,
                             tw_3:tw_3,

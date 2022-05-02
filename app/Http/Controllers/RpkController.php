@@ -39,29 +39,30 @@ class RpkController extends Controller
     }
     public function add(Request $x)
     {
-        $req = [
-            "kode_ik" => $x->kode_ik,
-            "kode_program" => $x->kode_program,
-            "rincian_program" => $x->rincian_program,
-            "nama_kegiatan" => $x->nama_kegiatan,
-            "Proposal_Project" => $x->proposal_project,
-            "Kebutuhan_Kegiatan" => $x->kebutuhan_kegiatan,
-            "Rencana_Jadwal_Pelaksanaan" => $x->Rencana_Jadwal_Pelaksanaan,
-            "tahun" => $x->tahun,
-        ];
-        Rab::create([
-            "rincian_program" => $x->rincian_program,
-            "nama_kegiatan" => $x->nama_kegiatan,
-            "kebutuhan_kegiatan" => $x->kebutuhan_kegiatan,
-        ]);
+        // $req = [
+        //     "kode_ik" => $x->kode_ik,
+        //     "kode_program" => $x->kode_program,
+        //     "rincian_program" => $x->rincian_program,
+        //     "nama_kegiatan" => $x->nama_kegiatan,
+        //     "Proposal_Project" => $x->proposal_project,
+        //     "Kebutuhan_Kegiatan" => $x->kebutuhan_kegiatan,
+        //     "Rencana_Jadwal_Pelaksanaan" => $x->Rencana_Jadwal_Pelaksanaan,
+        //     "tahun" => $x->tahun,
+        // ];
+        // Rab::create([
+        //     "rincian_program" => $x->rincian_program,
+        //     "nama_kegiatan" => $x->nama_kegiatan,
+        //     "kebutuhan_kegiatan" => $x->kebutuhan_kegiatan,
+        // ]);
         $uwu = DB::select(DB::raw("SELECT tb_rancangan_anggaran.codebase, tb_rancangan_anggaran.Rip, tb_rab.rincian_program from tb_rab INNER JOIN tb_rancangan_anggaran ON tb_rab.rincian_program = tb_rancangan_anggaran.Rip WHERE tb_rancangan_anggaran.Rip = '$x->rincian_program' AND tb_rancangan_anggaran.codebase REGEXP 'CAA|CBJ'"));
         Rangka::create([
             "codebase" => $uwu[0]->codebase,
+            "kode_prog" => $x->kode_program,
             "rincian_program" => $x->rincian_program,
             "nama_kegiatan" => $x->nama_kegiatan,
             "kebutuhan_kegiatan" => $x->kebutuhan_kegiatan,
         ]);
-        Rpk::UpdateOrCreate(["id" => $x->id],$req);
+        // Rpk::UpdateOrCreate(["id" => $x->id],$req);
         return 'SUKSES';
     }
     public function insertImg(Request $x)

@@ -1,4 +1,5 @@
 <div class="topbar d-flex align-items-center">
+    {{-- tempat, tgl, nama, nip, jabatan --}}
     <nav class="navbar navbar-expand">
         <div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
         </div>
@@ -277,7 +278,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a class="dropdown-item" href="javascript:;">
+                         {{--    <a class="dropdown-item" href="javascript:;">
                                 <div class="d-flex align-items-center">
                                     <div class="user-online">
                                         <!-- <img src="assets/images/avatars/avatar-9.png" class="msg-avatar" alt="user avatar"> -->
@@ -288,8 +289,8 @@
                                         <p class="msg-info">Various versions have evolved over</p>
                                     </div>
                                 </div>
-                            </a>
-                            <a class="dropdown-item" href="javascript:;">
+                            </a> --}}
+                            {{-- <a class="dropdown-item" href="javascript:;">
                                 <div class="d-flex align-items-center">
                                     <div class="user-online">
                                         <!-- <img src="assets/images/avatars/avatar-10.png" class="msg-avatar" alt="user avatar"> -->
@@ -300,8 +301,8 @@
                                         <p class="msg-info">If you are going to use a passage</p>
                                     </div>
                                 </div>
-                            </a>
-                            <a class="dropdown-item" href="javascript:;">
+                            </a> --}}
+                            {{-- <a class="dropdown-item" href="javascript:;">
                                 <div class="d-flex align-items-center">
                                     <div class="user-online">
                                         <!-- <img src="assets/images/avatars/avatar-11.png" class="msg-avatar" alt="user avatar"> -->
@@ -313,10 +314,10 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
-                        <a href="javascript:;">
+                        </div> --}}
+                        {{-- <a href="javascript:;">
                             <div class="text-center msg-footer">View All Messages</div>
-                        </a>
+                        </a> --}}
                     </div>
                 </li>
             </ul>

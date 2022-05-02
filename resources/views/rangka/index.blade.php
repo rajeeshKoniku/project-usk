@@ -2,7 +2,59 @@
 @extends('layouts.layout')
 @section('judul', 'Halaman Rangka')
 @section('content')
-    <div class="container">
+<h3>Form Rancangan Anggaran</h3>
+<div class="outer-wrapper">
+<div class="table-wrapper">
+    <table>
+        <thead>
+                                <th>ID</th>
+                                <th>Unit Kerja</th>
+                                <th>Codebase</th>
+                                <th>Rincian Program</th>
+                                <th>Nama Kegiatan</th>
+                                <th>Kebutuhan Kegiatan</th>
+                                <th>Akun</th>
+                                <th>Jenis Belanja</th>
+                                <th>PNBP Unit Kerja</th>
+                                <th>PNBP Institusi</th>
+                                <th>BOPTN</th>
+                                <th>Kerjasama</th>
+                                <th>Hibah</th>
+                                <th>Biaya Kegiatan</th>
+            <th>Aksi</th>
+        </thead>
+        <tbody>
+            @foreach($rangka as $dataRangka)
+                        <tr>
+                            <td> {{ $dataRangka->id }} </td>
+                            <td> </td>
+                            <td> {{ $dataRangka->codebase }} </td>
+                            <td id="rincian"> {{ $dataRangka->rincian_program }} </td>
+                            <td> {{ $dataRangka->nama_kegiatan }} </td>
+                            <td> {{ $dataRangka->kebutuhan_kegiatan }} </td>
+                            <td >
+                                <select style="width: 145px; font-size: 10px; font-weight: bold;" name="akun" id="akun" class="akun form-control">
+                                    <option value="-">SILAHKAN PILIH</option>
+                                </select>
+                            </td>
+                            <td contenteditable="true">{{ $dataRangka->jenis_belanja}}</td>
+                            <td contenteditable="true">{{ $dataRangka->PNBP_unitkerja}}</td>
+                            <td contenteditable="true">{{ $dataRangka->PNBP_institusi}}</td>
+                            <td contenteditable="true">{{ $dataRangka->BOPTN}}</td>
+                            <td contenteditable="true">{{ $dataRangka->kerjasama}}</td>
+                            <td contenteditable="true">{{ $dataRangka->hibah}}</td>
+                            <td contenteditable="true">{{ $dataRangka->biaya_kegiatan}}</td>
+                                <td style="display: inline-table; width: 110px; padding-bottom: 50px;">
+                                    <span class="del_btn"><i role="button" class="rounded bg-danger p-3 fa-solid fa-trash fa-sm mr-2"></i></span>
+                                    <span class="save_btn"><i role="button" class="rounded bg-info p-3 fa-solid fa-floppy-disk fa-sm"></i></span>
+                                    </td>
+                            </tr>
+                            @endforeach
+        </tbody>
+    </table>
+</div>
+</div>
+  {{--   <div class="container">
         <div class="card bg-dark">
             <div class="card-body">
                 <div class="table-responsive">
@@ -10,6 +62,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Unit Kerja</th>
                                 <th>Codebase</th>
                                 <th>Rincian Program</th>
                                 <th>Nama Kegiatan</th>
@@ -29,6 +82,7 @@
                         @foreach($rangka as $dataRangka)
                         <tr>
                             <td> {{ $dataRangka->id }} </td>
+                            <td> </td>
                             <td> {{ $dataRangka->codebase }} </td>
                             <td id="rincian"> {{ $dataRangka->rincian_program }} </td>
                             <td> {{ $dataRangka->nama_kegiatan }} </td>
@@ -50,16 +104,15 @@
                                 <td style="display: inline-table; width: 110px; padding-bottom: 50px;">
                                     <span class="del_btn"><i role="button" class="rounded bg-danger p-3 fa-solid fa-trash fa-sm mr-2"></i></span>
                                     <span class="save_btn"><i role="button" class="rounded bg-info p-3 fa-solid fa-floppy-disk fa-sm"></i></span>
-                                    {{-- <span class="new_btn"><i role="button" class="rounded bg-success p-3 fa-solid fa-plus fa-sm"></i></span> --}}
-                                </td>
+                                    </td>
                             </tr>
-                            @endforeach  {{-- foreach datarangka --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
  @push('scripts')

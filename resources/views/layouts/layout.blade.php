@@ -13,7 +13,7 @@
         <div class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div>
-                    <img src="{{asset('assets/')}}/images/logo-icon.png" class="logo-icon" alt="logo icon">
+                    <img src="{{asset('assets/')}}/images/unsyiah.png" class="logo-icon" alt="logo icon">
                 </div>
                 <div>
                     <h4 class="logo-text" style="font-family:'Orbitron';">REALITA</h4>
