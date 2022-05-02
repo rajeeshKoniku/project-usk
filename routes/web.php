@@ -27,7 +27,7 @@ use App\Models\Ss;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\homeController@home');
+Route::get('/', 'App\Http\Controllers\homeController@home')->name('/');
 
 //Ik Controller
 Route::get('/ik', [IkController::class, 'index'])->name('ik.index');
