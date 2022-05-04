@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\DataVerification;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IkController;
+use App\Http\Controllers\ikController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SsController;
 use App\Http\Controllers\RpkController;

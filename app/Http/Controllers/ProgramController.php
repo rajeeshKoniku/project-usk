@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ik;
-use App\Models\program;
+use App\Models\Program;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -12,9 +12,9 @@ class programController extends Controller
 {
     public function index()
     {
-        $Program = program::get();
+        $Program = Program::get();
         $IK = IK::get();
-        return view('Program.index',compact('Program','IK'));
+        return view('program.index',compact('Program','IK'));
     }
     public function del(Request $x)
     {

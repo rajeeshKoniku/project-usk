@@ -1,6 +1,6 @@
 <!-- Menghubungkan dengan view template master -->
 @extends('layouts.layout')
-@section('judul', 'Halaman IK')
+@section('judul', 'IK')
 @section('content')
 <div class="outer-wrapper">
     <div class="table-wrapper">
@@ -28,9 +28,9 @@
                                 </select>
                             </td>
                             <td style="width: 230px;" contenteditable="true">{{ $dataIK->kode_ik}}</td>
-                            <td style="width: 300px;" contenteditable="true">{{ $dataIK->indikator_kinerja}}</td>
+                            <td style="width: 500px;" contenteditable="true">{{ $dataIK->indikator_kinerja}}</td>
 
-                            <td style="width: 230px;">
+                            <td style="width: 200px;">
                                 <span class="del_btn"><i role="button" class="rounded bg-danger py-3 px-2 fa-solid fa-trash fa-sm"></i></span>
                                 <span class="save_btn"><i role="button" class="rounded bg-info py-3 px-2 fa-solid fa-floppy-disk fa-sm"></i></span>
                                 <span class="new_btn"><i role="button" class="rounded bg-success py-3 px-2 fa-solid fa-plus fa-sm"></i></span>
