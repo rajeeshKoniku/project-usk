@@ -24,6 +24,7 @@
                         <tr>
                             <td >{{ $data->id }}</td>
                             <td>{{ $data->codebase}}</td>
+                            <td></td>
                             <td contenteditable="true">{{ $data->Rip}}</td>
                             <td contenteditable="true">{{ $data->Keg}}</td>
                             <td contenteditable="true">{{ $data->KRO}}</td>

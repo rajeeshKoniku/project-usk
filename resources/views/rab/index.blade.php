@@ -44,7 +44,7 @@
 
                                     <td>
                                        <form id="catalog" enctype="multipart/form-data">
-                                          <input type="file" class="fu-catalog" name="fileCatalog" id="fileInputCatalog">
+                                          <input class="hidden" type="file" class="fu-catalog" name="fileCatalog" id="fileInputCatalog">
                                           <span class="btnCatalog badge pt-3"><a class="bg-dark py-2 px-2">Submit</a></span>
                                         </form>
                                      </td>
