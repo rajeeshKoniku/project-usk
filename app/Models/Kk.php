@@ -17,7 +17,8 @@ class Kk extends Model
            'tw_4',
            'nip',
            'nama_pimpinan',
-           'verifikasi'
+           'verifikasi_spi',
+           'verifikasi_sarpras'
     ];
 
     const DISETUJUI = 1;

@@ -19,5 +19,10 @@ class Rpk extends Model
         "Kebutuhan_Kegiatan",
         "Rencana_Jadwal_Pelaksanaan",
         "tahun",
+        'verifikasi_spi',
+        'verifikasi_sarpras'
     ];
+
+    const DISETUJUI = 1;
+    const DITOLAK = 2;
 }

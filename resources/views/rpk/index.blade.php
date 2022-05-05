@@ -7,19 +7,19 @@
 <div class="table-wrapper">
     <table>
         <thead>
-                                <th>ID</th>
-                                <th>Unit Kerja</th>
-                                <th>Kode IK</th>
-                                <th style="position: relative;">Indikator Kinerja</th>
-                                <th>Kode Program</th>
-                                <th>Program</th>
-                                <th>Rincian Program</th>
-                                <th>Nama Kegiatan</th>
-                                <th>TOR/KAK/ProposalProject</th>
-                                <th>Kebutuhan Kegiatan</th>
-                                <th>Rencana Jadwal Pelaksanaan</th>
-                                <th>Tahun</th>
-                                <th>Aksi</th>
+            <th>ID</th>
+            <th>Unit Kerja</th>
+            <th>Kode IK</th>
+            <th style="position: relative;">Indikator Kinerja</th>
+            <th>Kode Program</th>
+            <th>Program</th>
+            <th>Rincian Program</th>
+            <th>Nama Kegiatan</th>
+            <th>TOR/KAK/ProposalProject</th>
+            <th>Kebutuhan Kegiatan</th>
+            <th>Rencana Jadwal Pelaksanaan</th>
+            <th>Tahun</th>
+            <th>Aksi</th>
         </thead>
         <tbody>
              @foreach($RPK as $dataRPK)

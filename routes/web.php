@@ -92,6 +92,7 @@ Route::post('/rpk/insertImg', [RpkController::class, 'insertImg'])->name('rpk.in
 Route::get('/verification-perkin', [DataVerification::class, 'verificationPerkin'])->name('verification.perkin');
 Route::post('/verification-perkin', [DataVerification::class, 'updateVerificationPerkin'])->name('verification.perkin_update');
 Route::get('/verification-rekat', [DataVerification::class, 'verificationRekat'])->name('verification.rekat');
+Route::post('/verification-rekat', [DataVerification::class, 'updateVerificationRekat'])->name('verification.rekat_update');
 
 Route::get('/tes', function () {
     $ss = Ss::pluck('kode_ss', 'id');

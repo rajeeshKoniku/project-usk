@@ -62,7 +62,7 @@
             </div>
             <div class="menu-title">Verifikasi Perkin</div>
         </a>
-        <a href="{{ route('kk.index')}}">
+        <a href="{{ route('verification.rekat')}}">
             <div class="parent-icon"><i class='bx bx-grid'></i>
             </div>
             <div class="menu-title">Verifikasi Rekat</div>
