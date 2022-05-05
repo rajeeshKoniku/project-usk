@@ -6,23 +6,41 @@
 <div class="outer-wrapper">
 <div class="table-wrapper">
     <table>
-        <thead>
-                                <th>ID</th>
-                                <th>Unit Kerja</th>
-                                <th>Codebase</th>
+        {{-- <thead>
+                                <th rowspan="2">ID</th>
+                                <th >Unit Kerja</th>
+                                <th >Codebase</th>
                                 <th>Rincian Program</th>
                                 <th>Nama Kegiatan</th>
                                 <th>Kebutuhan Kegiatan</th>
                                 <th>Akun</th>
-                                <th>Jenis Belanja</th>
-                                <th>PNBP Unit Kerja</th>
-                                <th>PNBP Institusi</th>
+                                <th colspan="3">colom</th>
                                 <th>BOPTN</th>
                                 <th>Kerjasama</th>
                                 <th>Hibah</th>
                                 <th>Biaya Kegiatan</th>
             <th>Aksi</th>
-        </thead>
+        </thead> --}}
+        <tr>
+            <th rowspan="2">ID</th>
+            <th rowspan="2">Unit Kerja</th>
+            <th rowspan="2">Codebase</th>
+            <th rowspan="2">Rincian Program</th>
+            <th rowspan="2">Nama Kegiatan</th>
+            <th rowspan="2">Kebutuhan Kegiatan</th>
+            <th rowspan="2">Akun</th>
+            <th rowspan="2">Jenis Belanja</th>
+            <th colspan="5">Sumber Dana</th>
+            <th rowspan="2">Biaya Kegiatan</th>
+            <th rowspan="2">Aksi</th>
+          </tr>
+          <tr>
+            <th>BOPTN</th>
+            <th>PNBP Unit Kerja</th>
+            <th>PNBP Institusi</th>
+            <th>Kerjasama</th>
+            <th>Hibah</th>
+          </tr>
         <tbody>
             @foreach($rangka as $dataRangka)
                         <tr>
@@ -44,7 +62,7 @@
                             <td contenteditable="true">{{ $dataRangka->kerjasama}}</td>
                             <td contenteditable="true">{{ $dataRangka->hibah}}</td>
                             <td contenteditable="true">{{ $dataRangka->biaya_kegiatan}}</td>
-                                <td style="display: inline-table; width: 110px; padding-bottom: 50px;">
+                                <td style="width:200px" style="display: inline-table; width: 110px; padding-bottom: 50px;">
                                     <span class="del_btn"><i role="button" class="rounded bg-danger p-3 fa-solid fa-trash fa-sm mr-2"></i></span>
                                     <span class="save_btn"><i role="button" class="rounded bg-info p-3 fa-solid fa-floppy-disk fa-sm"></i></span>
                                     </td>
