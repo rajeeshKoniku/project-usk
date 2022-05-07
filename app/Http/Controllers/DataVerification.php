@@ -19,7 +19,7 @@ class DataVerification extends Controller
 
     public function updateVerificationPerkin(Request $req)
     {
-        $data = Rpk::where('id', $req->id)->update($req->except(['_token']));
+        $data = KK::where('id', $req->id)->update($req->except(['_token']));
         return $data;
     }
 
