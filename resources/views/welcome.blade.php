@@ -1,7 +1,10 @@
 <!-- Menghubungkan dengan view template master -->
-@extends('layout.layout')
-@section('judul', 'Halaman Home')
-@section('konten')
+@extends('layouts.layout')
+@section('judul', 'Home')
+@section('content')
 
+    <div class="container">
+		
+    </div>
 
 @endsection
